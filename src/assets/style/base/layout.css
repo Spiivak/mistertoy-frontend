@@ -1,16 +1,28 @@
+
 .main-layout {
-  margin: 0 auto;
-  padding-left: 1.6rem;
-  padding-right: 1.6rem;
-
+  display: grid;
+  grid-template-columns: 64px 1fr 64px;
+  grid-auto-rows: auto 1fr;
+  /* height: 100dvh; */
 }
 
-.container {
-  max-width: 800px;
-  padding: 1em;
-  margin: auto;
+.main-layout > :not(.full) {
+  grid-column: 2;
 }
 
+.main-layout *.full {
+  grid-column: 1 / -1;
+}
+
+
+/* TOYS LAYOUT */
+.toy-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+
+/* FOOTER LAYOUT */
 footer {
   background-color: var(--clr1);
   color: var(--clr1bg);

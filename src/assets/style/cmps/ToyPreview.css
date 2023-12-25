@@ -1,0 +1,15 @@
+.toy-preview {
+  background-color: white;
+
+  padding: 16px;
+  /* width: 156px; */
+  /* height: 156px; */
+
+  border-radius: 8px;
+  border: 1px solid #3a3a3a1b;
+  
+}
+
+.toy-actions {
+  gap: 8px;
+}

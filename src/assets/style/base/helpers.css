@@ -20,6 +20,10 @@
     align-items: center;
 }
 
+.flex.wrap {
+    flex-wrap: wrap;
+}
+
 /* text helpers */
 
 .colored-text {
