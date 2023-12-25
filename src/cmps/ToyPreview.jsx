@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-import DefaultImage from "../assets/img/default.webp"
 // const { Link } = ReactRouterDOM
 export function ToyPreview({ toy, onRemoveToy, onEditToy }) {
 

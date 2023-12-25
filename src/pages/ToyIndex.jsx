@@ -12,9 +12,7 @@ import { useEffect } from 'react'
 import { ToyFilter } from '../cmps/ToyFilter.jsx'
 
 export function ToyIndex() {
-    const dispatch = useDispatch()
     const toys = useSelector(storeState => storeState.toyModule.toys)
-    // const toyt = useSelector(storeState => storeState.toyModule.shoppingToyt)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
 
@@ -70,14 +68,6 @@ export function ToyIndex() {
         console.log('filterBy:', filterBy)
         setFilterBy(filterBy)
     }
-
-    // function addToToyt(toy) {
-    //     console.log('toy:', toy)
-    //     console.log(`Adding ${toy.vendor} to Toyt`)
-    //     dispatch({ type: ADD_CAR_TO_CART, toy })
-    //     showSuccessMsg('Added to Toyt')
-    // }
-
 
     return (
         <section className='toys-index'>
