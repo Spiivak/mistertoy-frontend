@@ -36,7 +36,7 @@ function query(filterBy = {}) {
         if (filterBy.maxPrice !== null) {
             toys = toys.filter(toy => toy.price >= filterBy.maxPrice);
         }
-        
+
         if (filterBy.minPrice !== null) {
             toys = toys.filter(toy => toy.price <= filterBy.minPrice);
         }
@@ -74,6 +74,7 @@ function getEmptyToy() {
         labels: ['label1', 'label2', 'label3'],
         createdAt: new Date(),
         inStock: Math.random() < 0.5,
+        img: `https://robohash.org/${utilService.makeLorem(5)}`
     }
 }
 

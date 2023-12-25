@@ -7,7 +7,7 @@ export function ToyPreview({ toy, onRemoveToy, onEditToy }) {
             <Link to={`/toy/${toy._id}`} >
                 <h4>{toy.name}</h4>
             </Link>
-            <img src={`https://robohash.org/${toy.name}`} alt="" />
+            <img src={toy.img} alt="" />
             <p>Price: <span>${toy.price.toLocaleString()}</span></p>
             {/* <p>Owner: <span>{toy.owner && toy.owner.fullname}</span></p> */}
             <div className="toy-actions flex">
