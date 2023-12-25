@@ -20,11 +20,33 @@ export const toyService = {
     save,
     remove,
     getEmptyToy,
-    getDefaultFilter
+    getDefaultFilter,
+    getDefaultSort
 }
 
-function query() {
-  return storageService.query(TOY_KEY)
+function query(filterBy = {}) {
+    console.log('query  filterBy:', filterBy)
+    // if (!filterBy.name) filterBy.name = ''
+    return storageService.query(TOY_KEY)
+    .then(toys => {
+        if(filterBy.name) {
+            const regExp = new RegExp(filterBy.name, 'i')
+            toys = toys.filter(toy => regExp.test(toy.name))
+        }
+        if (filterBy.maxPrice !== null) {
+            toys = toys.filter(toy => toy.price >= filterBy.maxPrice);
+        }
+        
+        if (filterBy.minPrice !== null) {
+            toys = toys.filter(toy => toy.price <= filterBy.minPrice);
+        }
+
+        if(filterBy.inStock !== "all") {
+            toys = toys.filter(toy => toy.inStock === JSON.parse(filterBy.inStock))
+        }
+
+        return toys
+        })
 
 }
 
@@ -51,7 +73,7 @@ function getEmptyToy() {
         price: utilService.getRandomIntInclusive(15, 1500),
         labels: ['label1', 'label2', 'label3'],
         createdAt: new Date(),
-        inStock: true,
+        inStock: Math.random() < 0.5,
     }
 }
 
@@ -69,7 +91,11 @@ function getEmptyToy() {
 
 
 function getDefaultFilter() {
-    return { txt: '', maxPrice: '' }
+    return { name: '', maxPrice: null, minPrice: null, inStock: 'all', label: '' }
+}
+
+function getDefaultSort() {
+    return { name: '', maxPrice: '', minPrice: '', created: '' }
 }
 
 

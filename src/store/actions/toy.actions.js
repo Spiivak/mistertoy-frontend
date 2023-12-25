@@ -6,6 +6,7 @@ import { store } from "../store.js"
 export function loadToys() {
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
     const filterBy = store.getState().toyModule.filterBy
+    console.log('loadToys  filterBy:', filterBy)
     return toyService.query(filterBy)
         .then(toys => {
             store.dispatch({ type: SET_TOYS, toys })
@@ -64,5 +65,6 @@ export function saveToy(toy) {
 }
 
 export function setFilterBy(filterBy) {
+    console.log('setFilterBy  filterBy:', filterBy)
     store.dispatch({ type: SET_FILTER_BY, filterBy })
 }
