@@ -1,0 +1,16 @@
+.admin-index {
+  background-color: #F7F7F7;
+}
+
+.main-admin-content {
+  padding: 16px;
+}
+
+.price-bar-chart, .random-numbers-chart, .inventory-bar-chart{
+  width: 500px;
+}
+
+
+.admin-dashboard {
+  gap: 32px;
+}

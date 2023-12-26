@@ -13,3 +13,7 @@
 .toy-actions {
   gap: 8px;
 }
+
+.toy-filter form {
+  gap: 8px;
+}
