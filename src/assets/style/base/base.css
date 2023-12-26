@@ -43,6 +43,6 @@ object {
   outline: 1px solid gold
 }
 
-a.active {
+.active {
   text-decoration: underline;
 }
