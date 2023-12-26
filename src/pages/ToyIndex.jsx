@@ -70,7 +70,7 @@ export function ToyIndex() {
     }
 
     return (
-        <section className='toys-index'>
+        <section className='toy-index'>
             <h3>Toys App</h3>
             <main>
                 <button onClick={onAddToy}>Add Toy</button>
