@@ -1,51 +1,54 @@
-import { useState } from "react"
-import { userService } from "../services/user.service"
+import React, { useState } from 'react'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+import { userService } from '../services/user.service'
 
-// const { useState } = React
+const LoginValidationSchema = Yup.object().shape({
+  username: Yup.string().required('Required'),
+  password: Yup.string().required('Required'),
+})
 
-export function LoginForm({ onLogin, isSignup }) {
+export function LoginForm({ onLogin }) {
+  const [credentials, setCredentials] = useState({
+    username: '',
+    password: '',
+  })
 
-    const [credentials, setCredentials] = useState(userService.getEmptyCredentials())
+  const formik = useFormik({
+    initialValues: credentials,
+    validationSchema: LoginValidationSchema,
+    onSubmit: (values) => {
+      onLogin(values)
+    },
+  })
 
-    function handleChange({ target }) {
-        const { name: field, value } = target
-        setCredentials(prevCreds => ({ ...prevCreds, [field]: value }))
-    }
-
-    function handleSubmit(ev) {
-        ev.preventDefault()
-        onLogin(credentials)
-    }
-
-    return (
-        <form className="login-form" onSubmit={handleSubmit}>
-            <input
-                type="text"
-                name="username"
-                value={credentials.username}
-                placeholder="Username"
-                onChange={handleChange}
-                required
-                autoFocus
-            />
-            <input
-                type="password"
-                name="password"
-                value={credentials.password}
-                placeholder="Password"
-                onChange={handleChange}
-                required
-                autoComplete="off"
-            />
-            {isSignup && <input
-                type="text"
-                name="fullname"
-                value={credentials.fullname}
-                placeholder="Full name"
-                onChange={handleChange}
-                required
-            />}
-            <button>{isSignup ? 'Signup' : 'Login'}</button>
-        </form>
-    )
+  return (
+    <form onSubmit={formik.handleSubmit}>
+      <div>
+        <label htmlFor="username">User Name:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.username}
+        />
+        {formik.touched.username && formik.errors.username && <div>{formik.errors.username}</div>}
+      </div>
+      <div>
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.password}
+        />
+        {formik.touched.password && formik.errors.password && <div>{formik.errors.password}</div>}
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  )
 }
