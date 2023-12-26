@@ -1,4 +1,11 @@
 // const { useState, useEffect, useRef } = React
+import * as React from 'react'
+import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import FormHelperText from '@mui/material/FormHelperText'
+import FormControl from '@mui/material/FormControl'
+import Select from '@mui/material/Select'
+import TextField from '@mui/material/TextField'
 
 import { useEffect, useRef, useState } from "react"
 import { utilService } from "../services/util.service.js"
@@ -21,23 +28,26 @@ export function ToyFilter({ filterBy, onSetFilter }) {
     // }
 
     function handleChange({ target }) {
-        const field = target.name;
-        let value = target.value;
+        console.log('handleChange  target:', target)
+        const field = target.name
+        let value = target.value
 
         switch (target.type) {
             case 'number':
             case 'range':
-                value = +value || '';
+                value = +value || ''
                 break;
 
             case 'checkbox':
-                value = target.checked;
+                value = target.checked
                 break;
 
             default:
                 break;
         }
-        setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }));
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
+        console.log('filterByToEdit:', filterByToEdit)
+
     }
 
 
@@ -45,35 +55,43 @@ export function ToyFilter({ filterBy, onSetFilter }) {
     return (
         <section className="toy-filter">
             <h2>Toys Filter</h2>
-            <form >
-                <input type="text"
-                    id="name"
+            <form className='flex align-center'>
+                <TextField
+                    id="outlined-search"
                     name="name"
-                    placeholder="By Name"
-                    value={filterByToEdit.name || ''}
+                    label="Search..."
+                    type="search"
+                    value={filterByToEdit.name ?? ''}
+                    variant="outlined"
                     onChange={handleChange}
                 />
-
-                <input type="number"
-                    id="maxPrice"
+                <TextField
+                    id="outlined-search"
                     name="maxPrice"
-                    placeholder="By max price"
-                    value={filterByToEdit.maxPrice || ''}
+                    label="Number"
+                    type="number"
+                    value={filterByToEdit.maxPrice ?? ''}
+                    variant="outlined"
                     onChange={handleChange}
+                    InputLabelProps={{
+                        shrink: true,
+                      }}
                 />
-
-                <label htmlFor="inStock">In Stock:</label>
-                <select
-                    id="inStock"
-                    name="inStock"
-                    value={filterByToEdit.inStock || ''}
-                    onChange={handleChange}
-                >
-                    <option value="all">All</option>
-                    <option value={true}>In Stock</option>
-                    <option value={false}>Not In Stock</option>
-                </select>
-
+                <FormControl sx={{ m: 0, minWidth: 120 }}>
+                    <InputLabel id="inStockLabel">In Stock</InputLabel>
+                    <Select
+                        labelId="inStockLabel"
+                        id="inStock"
+                        name="inStock"
+                        value={filterByToEdit.inStock ?? 'all'}
+                        label="In Stock"
+                        onChange={handleChange}
+                    >
+                        <MenuItem value={"all"}>All</MenuItem>
+                        <MenuItem value={true}>In Stock</MenuItem>
+                        <MenuItem value={false}>Out of stock</MenuItem>
+                    </Select>
+                </FormControl>
             </form>
 
         </section>
