@@ -14,6 +14,7 @@ import { AppHeader } from './cmps/AppHeader'
 import { store } from './store/store.js'
 import { ToyIndex } from './pages/ToyIndex.jsx'
 import { ToyDetails } from './pages/ToyDetails.jsx'
+import { AdminHeader } from './cmps/AdminHeader.jsx'
 // import { CarDetails } from './pages/CarDetails.jsx'
 
 
@@ -23,6 +24,7 @@ export function App() {
         <Provider store={store}>
             <Router>
                 <section className="main-layout app">
+                    <AdminHeader/>
                     <AppHeader />
                     <main>
                         <Routes>
