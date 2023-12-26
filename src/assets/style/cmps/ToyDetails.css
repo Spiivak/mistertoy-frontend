@@ -1,0 +1,28 @@
+.toy-details {
+  background-color: red;
+  grid-auto-flow: column;
+}
+
+.toy-image-slider {
+  grid-column: 2;
+  background-color: blue;
+}
+
+.toy-information {
+  grid-column: 1;
+  background-color: green;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  height: 50%;
+  margin: auto 0;
+}
+
+.toy-information h1 {
+  font-size: 38px;
+  color: #39557c;
+}
+
+.toy-information .add-to-cart {
+  
+}

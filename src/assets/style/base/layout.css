@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 64px 1fr 64px;
   grid-auto-rows: auto 1fr;
-  /* height: 100dvh; */
+  height: 100dvh;
 }
 
 .main-layout > :not(.full) {
@@ -32,3 +32,9 @@ footer {
 }
 
 
+/* TOY DETAILS LAYOUT */
+.toy-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}

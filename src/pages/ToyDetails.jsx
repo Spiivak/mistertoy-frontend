@@ -28,10 +28,29 @@ export function ToyDetails() {
     if (!toy) return <div>Loading...</div>
     return (
         <section className="toy-details">
-            <h1>{toy.name}</h1>
+            <section className="toy-image-slider">
+
             <img src={toy.img}></img>
+            </section>
+            <section className="toy-information">
+            <h1>{toy.name}</h1>
+            <div className="addons">
+                <input type="checkbox" name="" id="" />
+                <label>wrapping paper and greeting card for $1</label>
+            </div>
+            <div className="amount flex align-center">
+            <button>Add 1</button>
             <h5>Price: ${toy.price}</h5>
+            </div>
+            <div className="toy-details-actions">
+
+            <button>Add to cart</button>
+            <button>❤️</button>
+            </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi voluptas cumque tempore, aperiam sed dolorum rem! Nemo quidem, placeat perferendis tempora aspernatur sit, explicabo veritatis corrupti perspiciatis repellat, enim quibusdam!</p>
+            </section>
         </section>
     )
 }
+
+
