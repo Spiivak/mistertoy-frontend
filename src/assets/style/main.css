@@ -18,3 +18,10 @@
 @import 'cmps/ToyPreview.css';
 /* @import 'cmps/ShoppingCart.css'; */
 
+
+
+/* ADMIN CMPS */
+@import 'cmps/admin/AdminHeader.css';
+@import 'cmps/admin/AdminAside.css';
+@import 'cmps/admin/AdminIndex.css';
+
