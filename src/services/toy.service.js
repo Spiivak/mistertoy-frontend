@@ -8,11 +8,11 @@ import { storageService } from './async-storage.service.js'
 const TOY_KEY = 'toysDB'
 // setDemoData()
 // for cookies
-// const axios = Axios.create({
-//     withCredentials: true
-// })
+const axios = Axios.create({
+    withCredentials: true
+})
 
-// const BASE_URL = '/api/toy'
+const BASE_URL = 'toy/'
 
 export const toyService = {
     query,
@@ -24,48 +24,68 @@ export const toyService = {
     getDefaultSort
 }
 
+
 function query(filterBy = {}) {
-    console.log('query  filterBy:', filterBy)
-    // if (!filterBy.name) filterBy.name = ''
-    return storageService.query(TOY_KEY)
-    .then(toys => {
-        if(filterBy.name) {
-            const regExp = new RegExp(filterBy.name, 'i')
-            toys = toys.filter(toy => regExp.test(toy.name))
-        }
-        if (filterBy.maxPrice !== null) {
-            toys = toys.filter(toy => toy.price >= filterBy.maxPrice);
-        }
-
-        if (filterBy.minPrice !== null) {
-            toys = toys.filter(toy => toy.price <= filterBy.minPrice);
-        }
-
-        if(filterBy.inStock !== "all") {
-            toys = toys.filter(toy => toy.inStock === JSON.parse(filterBy.inStock))
-        }
-
-        return toys
-        })
-
+    return httpService.get(BASE_URL, filterBy)
 }
 
 function getById(toyId) {
-    return storageService.get(TOY_KEY, toyId)
+    return httpService.get(BASE_URL + toyId)
 }
 
 function remove(toyId) {
-    return storageService.remove(TOY_KEY, toyId)
+    return httpService.delete(BASE_URL + toyId)
 }
 
 function save(toy) {
     if (toy._id) {
-        return storageService.put(TOY_KEY, toy)
+        return httpService.put(BASE_URL, toy)
     } else {
-        return storageService.post(TOY_KEY, toy)
+        return httpService.post(BASE_URL, toy)
     }
 }
 
+// ################# STORAGE #################
+
+// function query(filterBy = {}) {
+//     return storageService.query(TOY_KEY)
+//     .then(toys => {
+//         if(filterBy.name) {
+//             const regExp = new RegExp(filterBy.name, 'i')
+//             toys = toys.filter(toy => regExp.test(toy.name))
+//         }
+//         if (filterBy.maxPrice !== null) {
+//             toys = toys.filter(toy => toy.price >= filterBy.maxPrice);
+//         }
+
+//         if (filterBy.minPrice !== null) {
+//             toys = toys.filter(toy => toy.price <= filterBy.minPrice);
+//         }
+
+//         if(filterBy.inStock !== "all") {
+//             toys = toys.filter(toy => toy.inStock === JSON.parse(filterBy.inStock))
+//         }
+
+//         return toys
+//         })
+
+// }
+
+// function getById(toyId) {
+//     return storageService.get(TOY_KEY, toyId)
+// }
+
+// function remove(toyId) {
+//     return storageService.remove(TOY_KEY, toyId)
+// }
+
+// function save(toy) {
+//     if (toy._id) {
+//         return storageService.put(TOY_KEY, toy)
+//     } else {
+//         return storageService.post(TOY_KEY, toy)
+//     }
+// }
 
 function getEmptyToy() {
     return {
@@ -77,19 +97,6 @@ function getEmptyToy() {
         img: `https://robohash.org/${utilService.makeLorem(5)}`
     }
 }
-
-// function setDemoData() {
-//   if (!toys && !toys.length) {
-
-//     const toys = [
-//       getEmptyToy(),
-//       getEmptyToy(),
-//       getEmptyToy()
-//     ]
-//     utilService.saveToStorage(TOY_KEY, toys)
-//   }
-// }
-
 
 function getDefaultFilter() {
     return { name: '', maxPrice: null, minPrice: null, inStock: 'all', label: '' }
