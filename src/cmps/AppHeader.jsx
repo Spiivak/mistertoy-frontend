@@ -6,7 +6,7 @@ import { userService } from '../services/user.service';
 import { SET_USER } from '../store/reducers/user.reducer';
 import React, { useState } from 'react';
 import { Modal } from './Modal';
-import { Avatar, Tooltip, Menu, MenuItem, IconButton } from '@mui/material';
+import { Avatar, Tooltip, Menu, MenuItem, IconButton, Chip } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export function AppHeader() {
@@ -69,12 +69,16 @@ export function AppHeader() {
           </div>
           {user ? (
             <section className='app-header-loggedin flex align-center'>
-              <div className="avatar-container flex align-center">
-              <Tooltip title={user.fullname} arrow>
-                <Avatar alt={user.fullname} src="/static/images/avatar/1.jpg" onClick={handleMenuOpen} />
-              </Tooltip>
-                <p>{user.fullname}</p>
-              </div>
+              {/* <div className="avatar-container flex align-center"> */}
+                <Tooltip title={user.fullname} arrow>
+                  <Chip avatar={<Avatar>M</Avatar>} label={user.fullname} onClick={handleMenuOpen}/>
+                  {/* <Chip
+                    avatar={<Avatar alt="Natacha"/>}
+                    label="Avatar"
+                    variant="outlined"
+                  /> */}
+                </Tooltip>
+              {/* </div> */}
               <Menu
                 id="avatar-menu"
                 anchorEl={anchorEl}
@@ -82,15 +86,15 @@ export function AppHeader() {
                 onClose={handleMenuClose}
                 anchorOrigin={{
                   vertical: 'bottom',
-                  horizontal: 'right',
+                  horizontal: 'center',
                 }}
                 transformOrigin={{
                   vertical: 'top',
-                  horizontal: 'right',
+                  horizontal: 'center',
                 }}
               >
                 <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-                {user.isAdmin && <MenuItem onClick={handleMenuClose}>Admin</MenuItem>}
+                {user.isAdmin && <NavLink to={'/admin/dashboard'}><MenuItem onClick={handleMenuClose}>Admin</MenuItem></NavLink>}
                 <MenuItem onClick={onLogout}>Logout</MenuItem>
               </Menu>
             </section>

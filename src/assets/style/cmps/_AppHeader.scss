@@ -3,9 +3,15 @@
   // color: var(--clr1bg);
   border-radius: 1000px;
   background: #CFEBF5;
-  margin: 0 64px 16px 64px;
+  margin: 16px 64px;
   padding: 1rem 4em;
   max-height: 65px;
+
+  .active {
+    // background-color: rgba(255, 166, 0, 0.342);
+    color: rgb(255, 166, 0);
+    font-weight: 600;
+  }
 }
 
 .app-header .logo {
