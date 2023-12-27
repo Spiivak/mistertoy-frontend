@@ -75,7 +75,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     onChange={handleChange}
                     InputLabelProps={{
                         shrink: true,
-                      }}
+                    }}
                 />
                 <FormControl sx={{ m: 0, minWidth: 120 }}>
                     <InputLabel id="inStockLabel">In Stock</InputLabel>

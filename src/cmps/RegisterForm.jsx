@@ -39,7 +39,7 @@ export function RegisterForm({ onSetUser, onClose, onRegister }) {
   };
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit} className='register-form flex column'>
       <TextField
         id="username"
         name="username"

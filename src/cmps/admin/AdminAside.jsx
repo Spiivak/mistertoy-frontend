@@ -37,7 +37,7 @@ export function AdminAside() {
   return (
     <aside className='admin-aside flex column'>
       <div className="admin-logo">
-        <img src={AppLogo} style={logoStyle}/>
+        <img src={AppLogo} style={logoStyle} />
       </div>
       <Stack spacing={2} direction='column' sx={stackStyle}>
         <Button variant="text" sx={buttonStyle} startIcon={<DashboardIcon />}><NavLink to="/admin/dashboard">Dashboard</NavLink></Button>
