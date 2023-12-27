@@ -57,12 +57,12 @@ export function AppHeader() {
             </nav>
           </div>
           {user ? (
-            <section>
+            <section className='app-header-loggedin flex align-center'>
               <span to={`/user/${user._id}`}>Hello {user.fullname}</span>
               <button onClick={onLogout}>Logout</button>
             </section>
           ) : (
-            <section>
+            <section className='app-header-actions flex'>
               <button onClick={() => openModal(true)}>Login</button>
               <button onClick={() => openModal(false)}>Register</button>
             </section>
