@@ -9,7 +9,9 @@
   width: 50px;
 }
 
-
+.app-header-actions, .app-header-loggedin {
+  gap: 8px;
+}
 
 .app-nav {
     gap: 15px;
