@@ -34,19 +34,7 @@ export function ToyIndex() {
             })
     }
 
-    function onAddToy() {
-        const toyToSave = toyService.getEmptyToy()
-        saveToy(toyToSave)
-            .then((savedToy) => {
-                console.log('savedToy:', savedToy)
-                showSuccessMsg(`Toy added (vendor: ${savedToy.vendor})`)
-                // dispatch({ type: ADD_CAR, toy: savedToy })
-            })
-            .catch(err => {
-                console.log('Cannot add toy', err)
-                showErrorMsg('Cannot add toy')
-            })
-    }
+
 
     function onEditToy(toy) {
         const price = +prompt('New price?')
@@ -71,9 +59,11 @@ export function ToyIndex() {
 
     return (
         <section className='toy-index'>
+            <div>
             <h3>Toys App</h3>
+            {/* <button onClick={onAddToy}>Add Toy</button> */}
+            </div>
             <main>
-                <button onClick={onAddToy}>Add Toy</button>
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
                 {!isLoading && <ToyList
                     toys={toys}

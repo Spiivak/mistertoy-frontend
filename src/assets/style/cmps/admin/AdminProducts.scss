@@ -1,0 +1,72 @@
+.admin-products {
+  .title-actions {
+    margin-bottom: 16px;
+  }
+}
+
+.analystics-bar {
+  // background-color: red;
+  border-radius: 0.75rem;
+  box-shadow: 0.0625rem 0rem 0rem #1a1a1a12;
+
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  // justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+
+}
+
+.products-by-sell, .prodcuts-by-day, .ABC-product{
+  padding: 16px;
+
+  width: 100%;
+  &:hover {
+      background-color: #f3f3f3;
+      border-radius: 8px;
+  }
+}
+
+.admin-products .add-products {
+  // background-color: red;
+  margin-top: 16px;
+  // padding: 16px;
+  height: 600px;
+  border: 0.0625rem solid #e3e3e3;
+  background-color: #fff;
+  border-radius: 0.5rem;
+
+  .add-products-actions {
+    // background-color: blue;
+    padding: 8px;
+    border-bottom: 0.0625rem solid #e3e3e3;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+        border-radius: 8px;
+  }
+
+  .add-your-products {
+    // display: flex;
+    // background-color: red;
+    padding: 128px 32px;
+    h3 {
+      color: #303030;
+      margin-bottom: 8px;
+      font-size: 1.25rem;
+      line-height: 1.5rem;
+    }
+    p {
+      color: #303030;
+      font-size: 1rem;
+      line-height: 1rem;
+      font-weight: 450;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .add-your-products-actions {
+    gap: 16px;
+  }
+}

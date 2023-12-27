@@ -1,0 +1,34 @@
+/* Setup */
+@import 'setup/variables';
+@import 'setup/typography';
+@import 'setup/mixins';
+@import 'setup/functions';
+
+/* Base */
+@import 'base/base';
+@import 'base/helpers';
+@import 'base/layout';
+@import 'base/forms';
+
+/* Components */
+@import 'cmps/AppHeader';
+@import 'cmps/UserMsg';
+
+@import 'cmps/ToyDetails';
+@import 'cmps/ToyFilter';
+@import 'cmps/ToyList';
+@import 'cmps/ToyPreview';
+@import 'cmps/LoginForm';
+@import 'cmps/RegisterForm';
+/* @import 'cmps/ShoppingCart.css'; */
+
+
+
+
+
+/* ADMIN CMPS */
+@import 'cmps/admin/AdminHeader';
+@import 'cmps/admin/AdminAside';
+@import 'cmps/admin/AdminIndex';
+@import 'cmps/admin/AdminProducts';
+

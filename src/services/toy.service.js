@@ -45,61 +45,20 @@ function save(toy) {
     }
 }
 
-// ################# STORAGE #################
-
-// function query(filterBy = {}) {
-//     return storageService.query(TOY_KEY)
-//     .then(toys => {
-//         if(filterBy.name) {
-//             const regExp = new RegExp(filterBy.name, 'i')
-//             toys = toys.filter(toy => regExp.test(toy.name))
-//         }
-//         if (filterBy.maxPrice !== null) {
-//             toys = toys.filter(toy => toy.price >= filterBy.maxPrice);
-//         }
-
-//         if (filterBy.minPrice !== null) {
-//             toys = toys.filter(toy => toy.price <= filterBy.minPrice);
-//         }
-
-//         if(filterBy.inStock !== "all") {
-//             toys = toys.filter(toy => toy.inStock === JSON.parse(filterBy.inStock))
-//         }
-
-//         return toys
-//         })
-
-// }
-
-// function getById(toyId) {
-//     return storageService.get(TOY_KEY, toyId)
-// }
-
-// function remove(toyId) {
-//     return storageService.remove(TOY_KEY, toyId)
-// }
-
-// function save(toy) {
-//     if (toy._id) {
-//         return storageService.put(TOY_KEY, toy)
-//     } else {
-//         return storageService.post(TOY_KEY, toy)
-//     }
-// }
-
 function getEmptyToy() {
     return {
-        name: utilService.makeLorem(5),
-        price: utilService.getRandomIntInclusive(15, 1500),
-        labels: ['label1', 'label2', 'label3'],
+        name: '',
+        price: '',
+        labels: [],
         createdAt: new Date(),
-        inStock: Math.random() < 0.5,
-        img: `https://robohash.org/${utilService.makeLorem(5)}`
+        inStock: '',
+        stock: '',
+        img: ''
     }
 }
 
 function getDefaultFilter() {
-    return { name: '', maxPrice: null, minPrice: null, inStock: 'all', label: '' }
+    return { name: '', maxPrice: null, minPrice: null, inStock: 1, label: '' }
 }
 
 function getDefaultSort() {

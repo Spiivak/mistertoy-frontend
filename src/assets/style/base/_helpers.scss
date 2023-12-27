@@ -1,5 +1,4 @@
-/* flex helpers */
-
+// HELPERS.SCSS
 .flex {
   display: flex;
 }
@@ -26,36 +25,27 @@
 
 /* text helpers */
 
-.colored-text {
-    color: var(--clr1);
-}
-
+.text-center {
+    text-align: center;
+  }
+  
+  .text-bold {
+    font-weight: bold;
+  }
 /* list helpers */
+.list-inline {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .list-inline-item {
+    display: inline-block;
+    margin-right: 8px; // Adjust as needed
+  }
 
 .clean-list {
     padding: 0;
     margin: 0;
     list-style-type: none;
-}
-
-/* font awsome */
-
-.fa {
-    font-family: fa;
-}
-
-.fa.fa-facebook::before {
-    content: "\f39e";
-}
-
-.fa.fa-twitter::before {
-    content: "\f099";
-}
-
-.fa.fa-dribbble::before {
-    content: "\f17d";
-}
-
-.fa.fa-behance::before {
-    content: "\f1b4";
 }

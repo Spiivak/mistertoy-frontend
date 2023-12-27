@@ -26,7 +26,7 @@ export function AdminAside() {
     width: '100%',
     '&:hover': {
       backgroundColor: 'rgba(255, 166, 0, 0.342)',
-      fontWeight: 'bold',
+      fontWeight: 'medium',
       color: '#3a3a3a',
     }
   }
@@ -40,8 +40,8 @@ export function AdminAside() {
         <img src={AppLogo} style={logoStyle} />
       </div>
       <Stack spacing={2} direction='column' sx={stackStyle}>
-        <Button variant="text" sx={buttonStyle} startIcon={<DashboardIcon />}><NavLink to="/admin/dashboard">Dashboard</NavLink></Button>
-        <Button variant="text" sx={buttonStyle} startIcon={<Inventory2Icon />}>Products</Button>
+      <NavLink to="/admin/dashboard"><Button variant="text" sx={buttonStyle} startIcon={<DashboardIcon />}>Dashboard</Button></NavLink>
+      <NavLink to="/admin/Products"><Button variant="text" sx={buttonStyle} startIcon={<Inventory2Icon />}>Products</Button></NavLink>
         <Button variant="text" sx={buttonStyle} startIcon={<ShoppingCartIcon />}>Orders</Button>
         <Button variant="text" sx={buttonStyle} startIcon={<PeopleIcon />}>Customers</Button>
         <Button variant="text" sx={buttonStyle} startIcon={<BarChartIcon />}>Statistics</Button>

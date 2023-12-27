@@ -20,13 +20,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
         onSetFilter.current(filterByToEdit)
         console.log('useEffect  filterByToEdit:', filterByToEdit)
     }, [filterByToEdit])
-
-    // function handleChange({ target }) {
-    //     let { value, name: field, type } = target
-    //     value = type === 'number' ? +value : value
-    //     setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
-    // }
-
+    
     function handleChange({ target }) {
         console.log('handleChange  target:', target)
         const field = target.name
@@ -55,7 +49,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
     return (
         <section className="toy-filter">
             <h2>Toys Filter</h2>
-            <form className='flex align-center'>
+            <form className='toy-filter-form flex column'>
                 <TextField
                     id="outlined-search"
                     name="name"

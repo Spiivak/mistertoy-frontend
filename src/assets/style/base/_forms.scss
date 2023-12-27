@@ -1,0 +1,139 @@
+// FORMS.SCSS
+
+/* Form Containers */
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  /* Form Elements */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+  
+    &:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+  }
+  
+  /* Form Buttons */
+  .button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #007bff;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+  
+  /* Validation Error Messages */
+  .error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+
+  // BUTTONS.SCSS
+
+/* Primary Button */
+.primary-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #007bff;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+  
+  /* Secondary Button */
+  .secondary-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #6c757d;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #6c757d;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #545b62;
+    }
+  }
+  
+  /* Success Button */
+  .success-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #28a745;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #218838;
+    }
+  }
+  
+  /* Danger Button */
+  .danger-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #dc3545;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #c82333;
+    }
+  }
+  
+  
