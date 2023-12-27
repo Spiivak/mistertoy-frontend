@@ -9,7 +9,7 @@ export function AdminIndex() {
   const user = useSelector(storeState => storeState.userModule.loggedinUser)
   console.log('AdminIndex  user:', user)
   useEffect(() =>{
-    if (!user) navigate('/')
+    if (!user || !user.isAdmin) navigate('/')
   }, [])
 
   if (!user) return
