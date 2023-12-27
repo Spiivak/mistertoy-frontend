@@ -7,9 +7,9 @@ import {AdminAside} from '../cmps/admin/AdminAside'
 export function AdminIndex() {
   const navigate = useNavigate()
   const user = useSelector(storeState => storeState.userModule.loggedinUser)
-
+  console.log('AdminIndex  user:', user)
   useEffect(() =>{
-    if (!user || !user.isAdmin) navigate('/')
+    if (!user) navigate('/')
   }, [])
 
   if (!user) return
