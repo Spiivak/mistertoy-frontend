@@ -52,8 +52,8 @@ export async function removeToy(toyId) {
 }
 
 export async function saveToy(toy) {
+    const type = toy._id ? UPDATE_TOY : ADD_TOY
     try {
-        const type = toy._id ? UPDATE_TOY : ADD_TOY
         const toyToSave = await toyService.save(toy)
         store.dispatch({ type, toy: toyToSave })
         return toyToSave

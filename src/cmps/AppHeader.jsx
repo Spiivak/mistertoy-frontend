@@ -1,12 +1,13 @@
 // AppHeader.jsx
 import MisterToyLogo from '../assets/img/mistertoy-logo.png';
+import tosr from '../assets/img/toysr-logo.webp';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { userService } from '../services/user.service';
 import { SET_USER } from '../store/reducers/user.reducer';
 import React, { useState } from 'react';
 import { Modal } from './Modal';
-import { Avatar, Tooltip, Menu, MenuItem, IconButton, Chip } from '@mui/material';
+import { Avatar, Tooltip, Menu, MenuItem, IconButton, Chip, Button } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export function AppHeader() {
@@ -54,16 +55,16 @@ export function AppHeader() {
   return (
     <>
       {!location.pathname.includes('/admin') && (
-        <header className="app-header flex space-between align-center">
-          <div className="logo">
-            <img src={MisterToyLogo} alt="" />
-          </div>
+        <header className="app-header full flex space-between align-center">
           <div className="links">
             <nav className="app-nav flex">
               <NavLink to="/">Home</NavLink>
               <NavLink to="/about">About</NavLink>
               <NavLink to="/toy">Toys</NavLink>
             </nav>
+          </div>
+          <div className="logo">
+            <img src={tosr} alt="" />
           </div>
           {user ? (
             <section className='app-header-loggedin flex align-center'>
@@ -98,8 +99,10 @@ export function AppHeader() {
             </section>
           ) : (
             <section className='app-header-actions flex'>
-              <button onClick={() => openModal(true)}>Login</button>
-              <button onClick={() => openModal(false)}>Register</button>
+        {/* <Button variant="text" onClick={() => openModal(true)}>Login</Button> */}
+        {/* <Button variant="contained" onClick={() => openModal(false)}>register</Button> */}
+              <button className='btn-login' onClick={() => openModal(true)}>Login</button>
+              <button className='btn-register' onClick={() => openModal(false)}>Register</button>
             </section>
           )}
         </header>

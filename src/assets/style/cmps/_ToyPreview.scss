@@ -5,9 +5,37 @@
   /* width: 156px; */
   /* height: 156px; */
 
-  border-radius: 8px;
-  border: 1px solid #3a3a3a1b;
-  
+  border-radius: 16px;
+  // border: 1px solid #3a3a3a41;
+
+  p {
+    text-align: center;
+    padding: 8px;
+  }
+
+  h4 {
+    padding: 8px;
+    text-align: center;
+    color: #39557C;
+  }
+  .add-to-cart {
+    all: unset;
+    padding: 8px;
+    // align-items: center;
+    text-align: center;
+    border-radius: 50px;
+    background-color: #EA0F41;
+    box-shadow: 0px -8px 0 0 #D30534 inset;
+    font-weight: 500;
+    // border-left: 8px solid #D30534;
+    color: white;
+
+    &:hover {
+      background-color: #D30534;
+      box-shadow: 0px -8px 0 0 #AE072D inset;
+
+    }
+  }
 }
 
 .toy-actions {

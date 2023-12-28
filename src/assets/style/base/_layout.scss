@@ -8,14 +8,14 @@
     grid-column: 2;
   }
 
-  *.full:not(.admin-header) {
+  *.full :not(.admin-header) {
     grid-column: 1 / -1;
   }
 
   main {
     display: grid;
     grid-template-columns: 300px 1fr;
-    padding: 16px 0;
+    padding: 32px 0;
 
     .toy-filter {
       height: max-content;

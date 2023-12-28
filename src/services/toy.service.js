@@ -58,7 +58,7 @@ function getEmptyToy() {
 }
 
 function getDefaultFilter() {
-    return { name: '', maxPrice: null, minPrice: null, inStock: 1, label: '' }
+    return { name: '', maxPrice: null, minPrice: null, inStock: '', label: '' }
 }
 
 function getDefaultSort() {

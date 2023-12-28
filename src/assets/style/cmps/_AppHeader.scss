@@ -1,46 +1,40 @@
 .app-header {
-  // background-color: var(--clr1);
-  // color: var(--clr1bg);
-  border-radius: 1000px;
-  background: #CFEBF5;
-  margin: 16px 64px;
+  background: #fff;
   padding: 1rem 4em;
+  position: relative;
   max-height: 65px;
 
   .active {
-    // background-color: rgba(255, 166, 0, 0.342);
     color: rgb(255, 166, 0);
     font-weight: 600;
+  }
+
+  .btn-login {
+    @include button-style('text', 'medium', 'secondary');
+  }
+
+  .btn-register {
+    @include button-style('contained', 'medium', 'secondary');
   }
 }
 
 .app-header .logo {
-  width: 50px;
+  width: 250px;
+  position: relative;
+  top: 16px;
 }
 
-.app-header-actions, .app-header-loggedin {
+.app-header-actions,
+.app-header-loggedin {
   gap: 8px;
 }
 
 .app-nav {
-    gap: 15px;
+  gap: 15px;
 }
 
 @media(max-width: 720px) {
   .app-header {
     color: var(--clr2bg);
   }
-}
-
-
-.avatar-container {
-  background-color: white;
-  border-radius: 10000px;
-  // padding: 2px;
-  padding-right: 16px;
-}
-
-.avatar-container p {
-  color: #3a3a3a;
-  padding: 8px;
 }

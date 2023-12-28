@@ -56,10 +56,6 @@ export function ToyIndex() {
 
     return (
         <section className='toy-index'>
-            <div>
-                <h3>Toys App</h3>
-                {/* <button onClick={onAddToy}>Add Toy</button> */}
-            </div>
             <main>
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
                 {!isLoading && <ToyList

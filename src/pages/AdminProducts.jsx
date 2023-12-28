@@ -26,10 +26,18 @@ export function AdminProducts() {
   const [isFormOpen, setFormOpen] = useState(false)
 
   useEffect(() => {
-    loadToys()
-      .catch(() => {
+    async () => {
+      try {
+        await loadToys()
+      } catch (err) {
         showErrorMsg('Cannot show toys')
-      })
+
+      }
+    }
+    // loadToys()
+    //   .catch(() => {
+    //     showErrorMsg('Cannot show toys')
+    //   })
   }, [])
 
   const handleAddButtonClick = () => {
@@ -41,11 +49,11 @@ export function AdminProducts() {
     if (toy.img === '') toy.img = `https://robohash.org/${toy.name}`
 
     try {
-      const savedTtoy = await toyService.saveToy(toy)
+      const savedTtoy = await saveToy(toy)
       console.log('savedToy:', savedTtoy)
       setFormOpen(false);
       showSuccessMsg(`Toy added (name: ${savedTtoy.name})`)
-    } catch (error) {
+    } catch (err) {
       console.log('Cannot add toy', err)
       showErrorMsg('Cannot add toy')
     }
