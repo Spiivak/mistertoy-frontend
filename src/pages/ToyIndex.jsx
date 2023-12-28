@@ -23,33 +23,30 @@ export function ToyIndex() {
             })
     }, [filterBy])
 
-    function onRemoveToy(toyId) {
-        removeToyOptimistic(toyId)
-            .then(() => {
-                showSuccessMsg('Toy removed')
-            })
-            .catch(err => {
-                console.log('Cannot remove toy', err)
-                showErrorMsg('Cannot remove toy')
-            })
+    async function onRemoveToy(toyId) {
+        try {
+            await removeToyOptimistic(toyId)
+            showSuccessMsg('Toy removed')
+        } catch (err) {
+            console.log('Cannot remove toy', err)
+            showErrorMsg('Cannot remove toy')
+        }
     }
 
 
 
-    function onEditToy(toy) {
+    async function onEditToy(toy) {
         const price = +prompt('New price?')
         const toyToSave = { ...toy, price }
 
-        saveToy(toyToSave)
-            .then((savedToy) => {
-                // dispatch({ type: UPDATE_CAR, toy: savedToy })
-                showSuccessMsg(`Toy updated to price: $${savedToy.price}`)
-            })
+        try {
+            const savedToy = await saveToy(toyToSave)
+            showSuccessMsg(`Toy updated to price: $${savedToy.price}`)
+        } catch (err) {
+            console.log('Cannot update toy', err)
+            showErrorMsg('Cannot update toy')
 
-            .catch(err => {
-                console.log('Cannot update toy', err)
-                showErrorMsg('Cannot update toy')
-            })
+        }
     }
 
     function onSetFilter(filterBy) {
@@ -60,8 +57,8 @@ export function ToyIndex() {
     return (
         <section className='toy-index'>
             <div>
-            <h3>Toys App</h3>
-            {/* <button onClick={onAddToy}>Add Toy</button> */}
+                <h3>Toys App</h3>
+                {/* <button onClick={onAddToy}>Add Toy</button> */}
             </div>
             <main>
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />

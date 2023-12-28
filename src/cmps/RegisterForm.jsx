@@ -26,17 +26,17 @@ export function RegisterForm({ onSetUser, onClose, onRegister }) {
     },
   });
 
-  const handleRegister = (credentials) => {
-    signup(credentials)
-      .then((user) => {
-        onSetUser(user);
-        showSuccessMsg('Signed up successfully');
-        onClose(); // Close the modal after successful registration
-      })
-      .catch((err) => {
-        showErrorMsg('Oops, try again');
-      });
-  };
+  async function handleRegister(credentials) {
+
+    try {
+      const userSignUp = await signup(credentials)
+      onSetUser(userSignUp);
+      showSuccessMsg('Signed up successfully');
+      onClose()
+    } catch (err) {
+      showErrorMsg('Oops, try again');
+    }
+  }
 
   return (
     <form onSubmit={formik.handleSubmit} className='register-form flex column'>

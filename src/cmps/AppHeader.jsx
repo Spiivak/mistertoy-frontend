@@ -28,15 +28,13 @@ export function AppHeader() {
     setAnchorEl(null);
   };
 
-  function onLogout() {
-    userService
-      .logout()
-      .then(() => {
-        onSetUser(null);
-      })
-      .catch((err) => {
-        showErrorMsg('OOPs try again');
-      });
+  async function onLogout() {
+    try {
+      await userService.logout()
+      onSetUser(null)
+    } catch (err) {
+      showErrorMsg('Oops try again');
+    }
   }
 
   function onSetUser(user) {

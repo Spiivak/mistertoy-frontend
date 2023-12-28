@@ -13,43 +13,58 @@ export const userService = {
     getEmptyCredentials
 }
 
-function getById(userId) {
-    return httpService.get(BASE_URL + userId)
+async function getById(userId) {
+    try {
+        const user = await httpService.get(BASE_URL + userId)
+        return user
+    } catch (err) {
+        console.error('Cannot find user with this id' ,err)
+        throw err
+    }
 }
 
-function login({ username, password }) {
-    return httpService.post(BASE_URL + 'login', { username, password })
-        .then(user => {
-            if (user) return _setLoggedinUser(user)
-            else return Promise.reject('Invalid login')
-        })
+async function login({ username, password }) {
+    try {
+        const loginUser = await httpService.post(BASE_URL + 'login', { username, password })
+        return _setLoggedinUser(loginUser)
+    }  catch (err) {
+        console.error('Cannot login user', err)
+        throw err
+    }
 }
 
-function signup({ username, password, fullname, isAdmin }) {
+async function signup({ username, password, fullname, isAdmin }) {
     const user = { username, password, fullname, score: 10000, isAdmin }
-    return httpService.post(BASE_URL + 'signup', user)
-        .then(user => {
-            if (user) return _setLoggedinUser(user)
-            else return Promise.reject('Invalid signup')
-        })
+    try {
+        await httpService.post(BASE_URL + 'signup', user)
+        return _setLoggedinUser(user)
+    } catch (err) {
+        console.error('Invalid signup', err)
+        throw err
+    }
 }
 
 
 
-function updateScore(diff) {
+async function updateScore(diff) {
     if (getLoggedinUser().score + diff < 0) return Promise.reject('No credit')
-    return httpService.put('user/', { diff })
-        .then(user => {
-            _setLoggedinUser(user)
-            return user.score
-        })
+    try {
+        const user = await httpService.put('user/', { diff })
+        _setLoggedinUser(user)
+    } catch (err) {
+        console.error('Error updating score:', err)
+        throw err
+    }
 }
 
-function logout() {
-    return httpService.post(BASE_URL + 'logout')
-        .then(() => {
-            sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN)
-        })
+async function logout() {
+    try {
+        await httpService.post(BASE_URL + 'logout')
+        sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN)
+    } catch (err) {
+        console.error('Error logging out:', err)
+        throw err
+    }
 }
 
 function getLoggedinUser() {
@@ -67,6 +82,7 @@ function getEmptyCredentials() {
     return {
         username: '',
         password: '',
+        score: 0,
         fullname: '',
         isAdmin: false
     }

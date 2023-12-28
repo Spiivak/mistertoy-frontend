@@ -15,14 +15,15 @@ export function ToyDetails() {
         loadToy()
     }, [toyId])
 
-    function loadToy() {
-        toyService.getById(toyId)
-            .then((toy) => setToy(toy))
-            .catch((err) => {
-                console.log('Had issues in toy details', err)
-                showErrorMsg('Cannot load toy')
-                navigate('/toy')
-            })
+    async function loadToy() {
+        try {
+          const toyToGet = await toyService.getById(toyId)
+          setToy(toyToGet)  
+        } catch (err) {
+            console.log('Had issues in toy details', err)
+            showErrorMsg('Cannot load toy')
+            navigate('/toy')
+        }
     }
 
     if (!toy) return <div>Loading...</div>

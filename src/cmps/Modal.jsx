@@ -19,47 +19,24 @@ const modalStyle = {
 
 export function Modal({ onClose, onSetUser, isLoginMode }) {
 
-//   function onLogin(credentials) {
-//     isSignup ? _signup(credentials) : _login(credentials)
-// }
-
-// function _login(credentials) {
-//     login(credentials)
-//         .then(onSetUser)
-//         .then(() => { showSuccessMsg('Logged in successfully') })
-//         .catch((err) => { showErrorMsg('Oops try again') })
-// }
-
-// function _signup(credentials) {
-//     signup(credentials)
-//         .then(onSetUser)
-//         .then(() => { showSuccessMsg('Signed in successfully') })
-//         .catch((err) => { showErrorMsg('Oops try again') })
-// }
-
-  const handleLogin = (credentials) => {
-    userService
-      .login(credentials)
-      .then((user) => {
-        onSetUser(user);
-        onClose();
-      })
-      .catch((error) => {
-        console.error('Login failed:', error);
-      });
+  const handleLogin = async (credentials) => {
+    try {
+      const user = await userService.login(credentials);
+      onSetUser(user);
+      onClose();
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
   };
 
-  const handleRegister = (credentials) => {
-    userService
-      .signup(credentials)
-      .then((user) => {
-        onSetUser(user)
-        console.log('###############################')
-        onClose()
-      })
-      .catch((error) => {
-        console.error('Registration failed:', error);
-      });
+  const handleRegister = async (credentials) => {
+    try {
+      const user = await userService.signup(credentials);
+      onSetUser(user);
+      onClose();
+    } catch (error) {
+      console.error('Registration failed:', error);
+    }
   };
 
   return (

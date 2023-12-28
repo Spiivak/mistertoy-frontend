@@ -36,20 +36,19 @@ export function AdminProducts() {
     setFormOpen(true)
   }
 
-  function onAddToy(toy) {
+  async function onAddToy(toy) {
     // const toyToSave = toyService.getEmptyToy()
     if (toy.img === '') toy.img = `https://robohash.org/${toy.name}`
-    saveToy(toy)
-      .then((toy) => {
-        console.log('savedToy:', toy)
-        setFormOpen(false);
-        showSuccessMsg(`Toy added (name: ${toy.name})`)
-        // dispatch({ type: ADD_CAR, toy: savedToy })
-      })
-      .catch(err => {
-        console.log('Cannot add toy', err)
-        showErrorMsg('Cannot add toy')
-      })
+
+    try {
+      const savedTtoy = await toyService.saveToy(toy)
+      console.log('savedToy:', savedTtoy)
+      setFormOpen(false);
+      showSuccessMsg(`Toy added (name: ${savedTtoy.name})`)
+    } catch (error) {
+      console.log('Cannot add toy', err)
+      showErrorMsg('Cannot add toy')
+    }
   }
   const handleModalClose = () => {
     setFormOpen(false);
