@@ -145,13 +145,13 @@ $secondary-color: #F48120;
 
   // Size options
   @if $button-size == 'small' {
-    padding: 8px;
+    padding: 4px;
     font-size: 0.75rem;
   } @else if $button-size == 'medium' {
-    padding: 12px;
+    padding: 8px;
     font-size: 1rem;
   } @else if $button-size == 'large' {
-    padding: 16px;
+    padding: 12px;
     font-size: 1.25rem;
   }
 
