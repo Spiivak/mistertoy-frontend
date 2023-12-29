@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -11,7 +11,31 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
 export function ImageSlider() {
   const images = [EndYear, FellingsDigital, PowerCard, Winter];
-  
+  const [centerPadding, setCenterPadding] = useState('150px');
+  const [isArrows, setArrows] = useState(true);
+
+  const updateCenterPadding = () => {
+    const windowWidth = window.innerWidth;
+    const breakpoint = 768;
+
+    if (windowWidth <= breakpoint) {
+      setCenterPadding('0px');
+      setArrows(false)
+      
+    } else {
+      setCenterPadding('150px');
+      setArrows(true)
+    }
+  };
+
+  useEffect(() => {
+    updateCenterPadding();
+    window.addEventListener('resize', updateCenterPadding);
+
+    return () => {
+      window.removeEventListener('resize', updateCenterPadding);
+    };
+  }, []);
   const settings = {
     dots: true,
     infinite: true,
@@ -19,8 +43,8 @@ export function ImageSlider() {
     slidesToShow: 1,
     slidesToScroll: 1,
     centerMode: true,
-    centerPadding: '150px',
-    arrows: true,
+    centerPadding: centerPadding,
+    arrows: isArrows,
   }
 
   return (

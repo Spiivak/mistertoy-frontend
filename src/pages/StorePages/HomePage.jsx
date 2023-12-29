@@ -29,7 +29,7 @@ export function HomePage() {
           <h4>Lego kits</h4>
         </div>
       </div>
-      <div className="category-links-wrapper flex space-between">
+      <div className="category-links-wrapper ">
         <div className="category-card">
           <img src={FindGift} alt="" />
           <h4>Find Gift</h4>

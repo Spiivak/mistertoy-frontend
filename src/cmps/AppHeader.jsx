@@ -1,45 +1,46 @@
 // AppHeader.jsx
-// import MisterToyLogo from '../assets/img/mistertoy-logo.png';
-import tosr from '../assets/img/toysr-logo.webp';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { userService } from '../services/user.service';
-import { SET_USER } from '../store/reducers/user.reducer';
-import React, { useState } from 'react';
-// import { Modal } from './Modal';
-import { Avatar, Tooltip, Menu, MenuItem, IconButton, Chip, Button } from '@mui/material';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-// import MoreVertIcon from '@mui/icons-material/MoreVert';
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+
+import tosr from '../assets/img/toysr-logo.webp'
+
+import { userService } from '../services/user.service'
+import { SET_USER } from '../store/reducers/user.reducer'
+
+import { Avatar, Tooltip, Menu, MenuItem, Chip } from '@mui/material'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import MenuIcon from '@mui/icons-material/Menu';
 
 export function AppHeader() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const location = useLocation();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const location = useLocation()
 
-  const user = useSelector((storeState) => storeState.userModule.loggedinUser);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const user = useSelector((storeState) => storeState.userModule.loggedinUser)
+  const [anchorEl, setAnchorEl] = useState(null)
 
   const handleMenuOpen = (event) => {
-    if(!user) return;
-    setAnchorEl(event.currentTarget);
-  };
+    if(!user) return
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
   async function onLogout() {
     try {
       await userService.logout()
       onSetUser(null)
     } catch (err) {
-      showErrorMsg('Oops try again');
+      showErrorMsg('Oops try again')
     }
   }
 
   function onSetUser(user) {
-    dispatch({ type: SET_USER, user });
-    navigate('/');
+    dispatch({ type: SET_USER, user })
+    navigate('/')
   }
 
   return (
@@ -54,11 +55,13 @@ export function AppHeader() {
               <NavLink to="/catalog">Toys</NavLink>
             </nav>
           </div>
+          <button className='btn-icon small-transparent cart-phone'><ShoppingCartIcon /></button>
           {/* LOGO */}
           <div className="logo">
             <img src={tosr} alt="" />
           </div>
           {/* USER CHIP WITH MODAL */}
+          <button className='btn-icon small-transparent ham-menu'> <MenuIcon/> </button>
           {user ? (
             <section className='app-header-loggedin flex align-center'>
                 <Tooltip title={user.fullname} arrow>
@@ -82,7 +85,7 @@ export function AppHeader() {
                 {user.isAdmin && <NavLink to={'/admin/dashboard'}><MenuItem onClick={handleMenuClose}>Admin</MenuItem></NavLink>}
                 <MenuItem onClick={onLogout}>Logout</MenuItem>
               </Menu>
-              <button className='btn-icon small-primary'><ShoppingCartIcon /></button>
+              <button className='btn-icon small-transparent'><ShoppingCartIcon /></button>
             </section>
           ) : (
             <section className='app-header-actions flex'>

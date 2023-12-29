@@ -47,8 +47,9 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 
 
     return (
+        <>
         <section className="toy-filter">
-            <h2>Toys Filter</h2>
+        {/* <h2>Toys Filter</h2> */}
             <form className='toy-filter-form flex column'>
                 <TextField
                     id="outlined-search"
@@ -58,7 +59,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     value={filterByToEdit.name ?? ''}
                     variant="outlined"
                     onChange={handleChange}
-                />
+                    />
                 <TextField
                     id="outlined-search"
                     name="maxPrice"
@@ -70,7 +71,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     InputLabelProps={{
                         shrink: true,
                     }}
-                />
+                    />
                 <FormControl sx={{ m: 0, minWidth: 120 }}>
                     <InputLabel id="inStockLabel">In Stock</InputLabel>
                     <Select
@@ -80,7 +81,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                         value={filterByToEdit.inStock ?? 'all'}
                         label="In Stock"
                         onChange={handleChange}
-                    >
+                        >
                         <MenuItem value={"all"}>All</MenuItem>
                         <MenuItem value={true}>In Stock</MenuItem>
                         <MenuItem value={false}>Out of stock</MenuItem>
@@ -89,5 +90,6 @@ export function ToyFilter({ filterBy, onSetFilter }) {
             </form>
 
         </section>
+                        </>
     )
 }

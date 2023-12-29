@@ -56,6 +56,10 @@ export function ToyIndex() {
 
     return (
         <section className='toy-index'>
+                <div className="information flex space-between align-center">
+                    <h2>Filter</h2>
+                    <span>Displaying 1-100 products out of 4351</span>
+                </div>
             <main>
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
                 {!isLoading && <ToyList
