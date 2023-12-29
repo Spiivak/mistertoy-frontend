@@ -9,33 +9,72 @@
     font-weight: 600;
   }
 
+  .app-header-actions,
+  .app-header-loggedin {
+    gap: 8px;
+  }
+
+  .app-nav {
+    gap: 15px;
+  }
+
+  .logo {
+    max-width: rem(225px);
+    position: relative;
+    z-index: 9999;
+    top: 16px;
+  }
+
   .btn-login {
     @include button-style('text', 'medium', 'secondary');
+  }
+
+  .ham-menu {
+    display: none;
+  }
+
+  .cart-phone {
+    display: none;
   }
 
   .btn-register {
     @include button-style('contained', 'medium', 'secondary');
   }
-}
 
-.app-header .logo {
-  width: 250px;
-  position: relative;
-  z-index: 9999;
-  top: 16px;
-}
+  @media(max-width: 720px) {
+    display: flex;
+    justify-content: space-between;
+    padding: 0rem 2em;
+    // justify-content: space-between;
+    .links {
+      display: none;
+    }
+    .logo {
+      width: auto;
+      display: flex;
+      justify-content: center;
+      top: 0;
+      img {
+        width: 70%;
+      }
+    }
+    .app-header-loggedin {
+      display: none;
+    }
+    .ham-menu {
+      display: inline-block;
+    }
 
-.app-header-actions,
-.app-header-loggedin {
-  gap: 8px;
-}
-
-.app-nav {
-  gap: 15px;
-}
-
-@media(max-width: 720px) {
-  .app-header {
-    color: var(--clr2bg);
+    .ham-menu button {
+      all: unset;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .cart-phone {
+      display: inline-block;
+    }
   }
 }
+
