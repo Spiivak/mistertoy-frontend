@@ -3,13 +3,13 @@
 
 import { useDispatch, useSelector } from 'react-redux'
 // import { ToyFilter } from '../cmps/ToyFilter.jsx'
-import { ToyList } from '../../cmps/ToyList.jsx'
+import { ToyList } from '../../cmps/store/ToyList.jsx'
 import { toyService } from '../../services/toy.service.js'
 import { showSuccessMsg, showErrorMsg } from '../../services/event-bus.service.js'
 import { loadToys, removeToy, removeToyOptimistic, saveToy, setFilterBy } from '../../store/actions/toy.actions.js'
 // import { ADD_CAR_TO_CART } from '../store/reducers/toy.reducer.js'
 import { useEffect } from 'react'
-import { ToyFilter } from '../../cmps/ToyFilter.jsx'
+import { ToyFilter } from '../../cmps/store/ToyFilter.jsx'
 
 export function ToyIndex() {
     const toys = useSelector(storeState => storeState.toyModule.toys)
