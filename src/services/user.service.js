@@ -23,9 +23,9 @@ async function getById(userId) {
     }
 }
 
-async function login({ username, password }) {
+async function login({ email, password }) {
     try {
-        const loginUser = await httpService.post(BASE_URL + 'login', { username, password })
+        const loginUser = await httpService.post(BASE_URL + 'login', { email, password })
         return _setLoggedinUser(loginUser)
     }  catch (err) {
         console.error('Cannot login user', err)
@@ -33,8 +33,8 @@ async function login({ username, password }) {
     }
 }
 
-async function signup({ username, password, fullname, isAdmin }) {
-    const user = { username, password, fullname, score: 10000, isAdmin }
+async function signup({ email, password, fullname, phone, acceptSMS }) {
+    const user = { email, password, fullname, score: 10000, phone, acceptSMS }
     try {
         await httpService.post(BASE_URL + 'signup', user)
         return _setLoggedinUser(user)
@@ -72,7 +72,7 @@ function getLoggedinUser() {
 }
 
 function _setLoggedinUser(user) {
-    const userToSave = { _id: user._id, fullname: user.fullname, score: user.score, isAdmin: user.isAdmin}
+    const userToSave = { _id: user._id, email: user.email, fullname: user.fullname, score: user.score, isAdmin: user.isAdmin}
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(userToSave))
     return userToSave
 }
@@ -80,10 +80,12 @@ function _setLoggedinUser(user) {
 
 function getEmptyCredentials() {
     return {
-        username: '',
+        email: '',
         password: '',
         score: 0,
         fullname: '',
+        acceptSMS: '',
+        phone: '',
         isAdmin: false
     }
 }

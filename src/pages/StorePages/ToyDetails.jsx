@@ -2,8 +2,8 @@
 // const { useParams, useNavigate, Link } = ReactRouterDOM
 
 import { useEffect, useState } from "react"
-import { toyService } from "../services/toy.service.js"
-import { showErrorMsg } from "../services/event-bus.service.js"
+import { toyService } from "../../services/toy.service.js"
+import { showErrorMsg } from "../../services/event-bus.service.js"
 import { useNavigate, useParams } from "react-router-dom"
 
 export function ToyDetails() {
@@ -22,7 +22,7 @@ export function ToyDetails() {
         } catch (err) {
             console.log('Had issues in toy details', err)
             showErrorMsg('Cannot load toy')
-            navigate('/toy')
+            navigate('/catalog')
         }
     }
 

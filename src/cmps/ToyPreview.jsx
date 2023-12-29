@@ -5,7 +5,7 @@ export function ToyPreview({ toy, onRemoveToy, onEditToy }) {
     return (
         <li className="toy-preview flex column space-between" key={toy._id}>
             <img src={toy.img} alt="" />
-            <Link to={`/toy/${toy._id}`} >
+            <Link to={`/catalog/${toy._id}`} >
                 <h4>{toy.name}</h4>
             </Link>
             <p>Price: <span>${toy.price.toLocaleString()}</span></p>

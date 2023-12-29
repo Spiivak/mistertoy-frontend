@@ -10,26 +10,65 @@
 @import 'base/layout';
 @import 'base/forms';
 
-/* Components */
-@import 'cmps/AppHeader';
-@import 'cmps/UserMsg';
 
-@import 'cmps/ToyDetails';
-@import 'cmps/ToyFilter';
-@import 'cmps/ToyList';
-@import 'cmps/ToyPreview';
-@import 'cmps/LoginForm';
-@import 'cmps/RegisterForm';
-/* @import 'cmps/ShoppingCart.css'; */
 
+// ?####### MAIN APP COMPONENTS #######
+
+/* ####### */
+/* ####### */ @import 'cmps/AppHeader';
+/* ####### */ @import 'cmps/AppFooter';
+/* ####### */ @import 'cmps/UserMsg';
+/* ####### */
+
+// ?####### MAIN APP COMPONENTS #######
+
+
+// ?####### STORE #######
+
+// !####### COMPONENTS #######
+/* ####### */
+/* ####### */ @import 'cmps/store/ToyFilter';
+/* ####### */ @import 'cmps/store/ToyList';
+/* ####### */ @import 'cmps/store/ToyPreview';
+/* ####### */ @import 'cmps/store/LoginForm';
+/* ####### */ @import 'cmps/store/RegisterForm';
+/* ####### */
+
+// !####### PAGES  #######
+/* ####### */
+/* ####### */ @import 'pages/store/ToyDetails';
+/* ####### */ @import 'pages/store/customer/CustomerProfile';
+/* ####### */
+
+// ?####### STORE #######
+
+// ?####### ADMIN #######
+
+// !####### COMPONENTS #######
+/* ####### */
+/* ####### */ @import 'cmps/admin/AdminHeader';
+/* ####### */ @import 'cmps/admin/AdminAside';
+/* ####### */ @import 'cmps/store/ToyPreview';
+/* ####### */ @import 'cmps/store/LoginForm';
+/* ####### */ @import 'cmps/store/RegisterForm';
+/* ####### */
+
+// !####### PAGES  #######
+/* ####### */
+/* ####### */ @import 'pages/admin/AdminIndex';
+/* ####### */ @import 'pages/admin/AdminProducts';
+/* ####### */ @import 'pages/admin/AdminDashboard';
+/* ####### */
+
+// ?####### ADMIN #######
 
 
 
 
 /* ADMIN CMPS */
-@import 'cmps/admin/AdminHeader';
-@import 'cmps/admin/AdminAside';
-@import 'cmps/admin/AdminIndex';
-@import 'cmps/admin/AdminProducts';
-@import 'cmps/admin/AdminDashboard';
+// @import 'cmps/admin/AdminHeader';
+// @import 'cmps/admin/AdminAside';
+// @import 'cmps/admin/AdminIndex';
+// @import 'cmps/admin/AdminProducts';
+// @import 'cmps/admin/AdminDashboard';
 

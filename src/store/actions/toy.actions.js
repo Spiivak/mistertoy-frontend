@@ -6,13 +6,14 @@ export async function loadToys() {
     try {
         store.dispatch({ type: SET_IS_LOADING, isLoading: true });
         const filterBy = store.getState().toyModule.filterBy;
-        console.log('loadToys filterBy:', filterBy);
+        console.log('Loading toys with filter:', filterBy);
 
         const toys = await toyService.query(filterBy);
 
-        store.dispatch({ type: SET_TOYS, toys });
+        store.dispatch({ type: SET_TOYS, toys })
+        console.log('Successfully loaded toys:', toys)
     } catch (err) {
-        console.error('toy action -> Cannot load toys', err);
+        console.error('Failed to load toys:', err);
         throw err;
     } finally {
         store.dispatch({ type: SET_IS_LOADING, isLoading: false });
@@ -28,7 +29,12 @@ export async function removeToyOptimistic(toyId) {
         const toy = await toyService.remove(toyId)
         store.dispatch({ type: TOY_UNDO })
     } catch (err) {
-        console.log('toy action -> Cannot remove toy', err)
+        console.error('Failed to remove toy optimistically:', err);
+        if (err instanceof NetworkError) {
+            console.error('Network error during toy removal.');
+        } else {
+            console.error('Unexpected error during toy removal:', err);
+        }
         throw err
     } finally {
         store.dispatch({ type: SET_IS_LOADING, isLoading: false })
@@ -40,10 +46,18 @@ export async function removeToy(toyId) {
 
     try {
         store.dispatch({ type: SET_IS_LOADING, isLoading: true })
-        await toyService.remove(toyId)
+        const toy = toyService.remove(toyId)
         store.dispatch({ type: REMOVE_TOY, toyId })
+        // store.dispatch({ type: TOY_UNDO });
+        console.log('Successfully removed toy:', toyId)
+        await toyService.remove(toyId)
     } catch (err) {
-        console.log('toy action -> Cannot remove toy', err)
+        console.error('Failed to remove toy:', err);
+        if (err instanceof NetworkError) {
+            console.error('Network error during toy removal.');
+        } else {
+            console.error('Unexpected error during toy removal:', err);
+        }
         throw err
     } finally {
         store.dispatch({ type: SET_IS_LOADING, isLoading: false })

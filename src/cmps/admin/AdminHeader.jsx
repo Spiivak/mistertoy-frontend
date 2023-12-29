@@ -11,7 +11,7 @@ export function AdminHeader() {
     <>
     {location.pathname.includes('/admin') && <header className="admin-header flex full">
       <nav className="admin-nav flex align-center">
-        <NavLink to="/toy" >Toy</NavLink>
+        <NavLink to="/catalog" >Toy</NavLink>
       </nav>
     </header>}
     </>

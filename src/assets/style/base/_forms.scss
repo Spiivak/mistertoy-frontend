@@ -2,138 +2,108 @@
 
 /* Form Containers */
 .form-container {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  /* Form Elements */
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  
-  input,
-  textarea,
-  select {
-    width: 100%;
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s ease;
-  
-    &:focus {
-      border-color: #007bff;
-      outline: none;
-    }
-  }
-  
-  /* Form Buttons */
-  .button {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border: 1px solid #007bff;
-    border-radius: 4px;
-    color: #fff;
-    background-color: #007bff;
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      background-color: #0056b3;
-    }
-  }
-  
-  /* Validation Error Messages */
-  .error-message {
-    color: #dc3545;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-  }
+  max-width: 400px;
+  margin: 0 auto;
+}
 
-  // BUTTONS.SCSS
+/* Form Elements */
+.form-group {
+  margin-bottom: 1.5rem;
+}
 
-/* Primary Button */
-.primary-button {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border: 1px solid #007bff;
-    border-radius: 4px;
-    color: #fff;
-    background-color: #007bff;
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      background-color: #0056b3;
-    }
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: #007bff;
+    outline: none;
   }
-  
-  /* Secondary Button */
-  .secondary-button {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border: 1px solid #6c757d;
-    border-radius: 4px;
-    color: #fff;
-    background-color: #6c757d;
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      background-color: #545b62;
-    }
-  }
-  
-  /* Success Button */
-  .success-button {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border: 1px solid #28a745;
-    border-radius: 4px;
-    color: #fff;
-    background-color: #28a745;
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      background-color: #218838;
-    }
-  }
-  
-  /* Danger Button */
-  .danger-button {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border: 1px solid #dc3545;
-    border-radius: 4px;
-    color: #fff;
-    background-color: #dc3545;
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      background-color: #c82333;
-    }
-  }
-  
-  
+}
+
+// Icon Button
+.btn-icon.small-primary {
+  @include button-style('icon', 'small', 'primary');
+}
+
+.btn-icon.medium-primary {
+  @include button-style('icon', 'medium', 'primary');
+}
+
+.btn-icon.large-primary {
+  @include button-style('icon', 'large', 'primary');
+}
+
+.btn-icon.small-sec {
+  @include button-style('icon', 'small', 'secondary');
+}
+
+.btn-icon.medium-sec {
+  @include button-style('icon', 'medium', 'secondary');
+}
+
+.btn-icon.large-sec {
+  @include button-style('icon', 'large', 'secondary');
+}
+
+
+// Text Button
+.btn-txt.small-primary {
+  @include button-style('text', 'small', 'primary');
+}
+
+.btn-txt.medium-primary {
+  @include button-style('text', 'medium', 'primary');
+}
+
+.btn-txt.large-primary {
+  @include button-style('text', 'large', 'primary');
+}
+
+.btn-txt.small-sec {
+  @include button-style('text', 'small', 'secondary');
+}
+
+.btn-txt.medium-sec {
+  @include button-style('text', 'medium', 'secondary');
+}
+
+.btn-txt.large-sec {
+  @include button-style('text', 'large', 'secondary');
+}
+
+// Contained Button
+.btn-ctn.small-primary {
+  @include button-style('contained', 'small', 'primary');
+}
+
+.btn-ctn.medium-primary {
+  @include button-style('contained', 'medium', 'primary');
+}
+
+.btn-ctn.large-primary {
+  @include button-style('contained', 'large', 'primary');
+}
+
+.btn-ctn.small-sec {
+  @include button-style('contained', 'small', 'secondary');
+}
+
+.btn-ctn.medium-sec {
+  @include button-style('contained', 'medium', 'secondary');
+}
+
+.btn-ctn.large-sec {
+  @include button-style('contained', 'large', 'secondary');
+}

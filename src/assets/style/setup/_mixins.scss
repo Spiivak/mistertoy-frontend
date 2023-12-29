@@ -206,7 +206,7 @@ $secondary-color: #F48120;
   // Specific hover effect for icon buttons
   @if $button-type == 'icon' {
     &:hover {
-      background-color: darken($bg-color, 40%);
+      background-color: darken($bg-color, 10%);
     }
   }
 

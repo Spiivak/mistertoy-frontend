@@ -8,6 +8,7 @@ import { SET_USER } from '../store/reducers/user.reducer';
 import React, { useState } from 'react';
 import { Modal } from './Modal';
 import { Avatar, Tooltip, Menu, MenuItem, IconButton, Chip, Button } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export function AppHeader() {
@@ -22,6 +23,7 @@ export function AppHeader() {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleMenuOpen = (event) => {
+    if(!user) return;
     setAnchorEl(event.currentTarget);
   };
 
@@ -43,41 +45,28 @@ export function AppHeader() {
     navigate('/');
   }
 
-  const openModal = (loginMode) => {
-    setIsLoginMode(loginMode);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <>
       {!location.pathname.includes('/admin') && (
         <header className="app-header full flex space-between align-center">
+          {/* LINKS */}
           <div className="links">
             <nav className="app-nav flex">
               <NavLink to="/">Home</NavLink>
-              <NavLink to="/about">About</NavLink>
-              <NavLink to="/toy">Toys</NavLink>
+              <NavLink to="/about-us">About</NavLink>
+              <NavLink to="/catalog">Toys</NavLink>
             </nav>
           </div>
+          {/* LOGO */}
           <div className="logo">
             <img src={tosr} alt="" />
           </div>
+          {/* USER CHIP WITH MODAL */}
           {user ? (
             <section className='app-header-loggedin flex align-center'>
-              {/* <div className="avatar-container flex align-center"> */}
                 <Tooltip title={user.fullname} arrow>
-                  <Chip avatar={<Avatar>M</Avatar>} label={user.fullname} onClick={handleMenuOpen}/>
-                  {/* <Chip
-                    avatar={<Avatar alt="Natacha"/>}
-                    label="Avatar"
-                    variant="outlined"
-                  /> */}
+                  <Chip avatar={<Avatar>E</Avatar>} label={user.fullname} onClick={handleMenuOpen}/>
                 </Tooltip>
-              {/* </div> */}
               <Menu
                 id="avatar-menu"
                 anchorEl={anchorEl}
@@ -96,13 +85,13 @@ export function AppHeader() {
                 {user.isAdmin && <NavLink to={'/admin/dashboard'}><MenuItem onClick={handleMenuClose}>Admin</MenuItem></NavLink>}
                 <MenuItem onClick={onLogout}>Logout</MenuItem>
               </Menu>
+              <button className='btn-icon small-primary'><ShoppingCartIcon /></button>
             </section>
           ) : (
             <section className='app-header-actions flex'>
-        {/* <Button variant="text" onClick={() => openModal(true)}>Login</Button> */}
-        {/* <Button variant="contained" onClick={() => openModal(false)}>register</Button> */}
-              <button className='btn-login' onClick={() => openModal(true)}>Login</button>
-              <button className='btn-register' onClick={() => openModal(false)}>Register</button>
+              <button className='btn-login' onClick={() => navigate('/customer/account/login')}>Login</button>
+              <button className='btn-register' onClick={() => navigate('/customer/account/create')}>Register</button>
+              {/* <button className='btn-register' onClick={() => openModal(false)}>Register</button> */}
             </section>
           )}
         </header>

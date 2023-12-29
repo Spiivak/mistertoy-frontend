@@ -6,13 +6,13 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 const LoginValidationSchema = Yup.object().shape({
-  username: Yup.string().required('Required'),
+  email: Yup.string().required('Required'),
   password: Yup.string().required('Required'),
 })
 
 export function LoginForm({ onLogin }) {
   const [credentials, setCredentials] = useState({
-    username: '',
+    email: '',
     password: '',
   })
 
@@ -27,15 +27,15 @@ export function LoginForm({ onLogin }) {
   return (
     <form onSubmit={formik.handleSubmit} className='login-form flex column'>
       <TextField
-        id="username"
-        name="username"
-        autoComplete="username"
-        label="User Name"
+        id="email"
+        name="email"
+        autoComplete="email"
+        label="Email"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        value={formik.values.username}
-        error={formik.touched.username && Boolean(formik.errors.username)}
-        helperText={formik.touched.username && formik.errors.username}
+        value={formik.values.email}
+        error={formik.touched.email && Boolean(formik.errors.email)}
+        helperText={formik.touched.email && formik.errors.email}
       />
       <TextField
         type="password"
