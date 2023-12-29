@@ -1,15 +1,15 @@
 // AppHeader.jsx
-import MisterToyLogo from '../assets/img/mistertoy-logo.png';
+// import MisterToyLogo from '../assets/img/mistertoy-logo.png';
 import tosr from '../assets/img/toysr-logo.webp';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { userService } from '../services/user.service';
 import { SET_USER } from '../store/reducers/user.reducer';
 import React, { useState } from 'react';
-import { Modal } from './Modal';
+// import { Modal } from './Modal';
 import { Avatar, Tooltip, Menu, MenuItem, IconButton, Chip, Button } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+// import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export function AppHeader() {
   const dispatch = useDispatch();
@@ -17,9 +17,6 @@ export function AppHeader() {
   const location = useLocation();
 
   const user = useSelector((storeState) => storeState.userModule.loggedinUser);
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoginMode, setIsLoginMode] = useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleMenuOpen = (event) => {
@@ -97,10 +94,6 @@ export function AppHeader() {
         </header>
       )}
 
-      {/* Render Modal */}
-      {isModalOpen && !user && (
-        <Modal onClose={closeModal} onSetUser={onSetUser} isLoginMode={isLoginMode} />
-      )}
     </>
-  );
+  )
 }
