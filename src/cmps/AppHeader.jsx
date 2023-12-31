@@ -46,7 +46,7 @@ export function AppHeader() {
   return (
     <>
       {!location.pathname.includes('/admin') && (
-        <header className="app-header full flex space-between align-center">
+        <header className="app-header full flex align-center">
           {/* LINKS */}
           <div className="links">
             <nav className="app-nav flex">
@@ -55,13 +55,11 @@ export function AppHeader() {
               <NavLink to="/catalog">Toys</NavLink>
             </nav>
           </div>
-          <button className='btn-icon small-transparent cart-phone'><ShoppingCartIcon /></button>
           {/* LOGO */}
           <div className="logo">
             <img src={tosr} alt="" />
           </div>
           {/* USER CHIP WITH MODAL */}
-          <button className='btn-icon small-transparent ham-menu'> <MenuIcon/> </button>
           {user ? (
             <section className='app-header-loggedin flex align-center'>
                 <Tooltip title={user.fullname} arrow>
