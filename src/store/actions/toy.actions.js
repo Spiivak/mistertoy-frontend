@@ -6,12 +6,10 @@ export async function loadToys() {
     try {
         store.dispatch({ type: SET_IS_LOADING, isLoading: true });
         const filterBy = store.getState().toyModule.filterBy;
-        console.log('Loading toys with filter:', filterBy);
 
         const toys = await toyService.query(filterBy);
 
         store.dispatch({ type: SET_TOYS, toys })
-        console.log('Successfully loaded toys:', toys)
     } catch (err) {
         console.error('Failed to load toys:', err);
         throw err;
@@ -78,6 +76,5 @@ export async function saveToy(toy) {
 }
 
 export function setFilterBy(filterBy) {
-    console.log('setFilterBy  filterBy:', filterBy)
     store.dispatch({ type: SET_FILTER_BY, filterBy })
 }
