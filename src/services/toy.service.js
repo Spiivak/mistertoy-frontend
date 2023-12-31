@@ -52,13 +52,13 @@ function getEmptyToy() {
         labels: [],
         createdAt: new Date(),
         inStock: '',
-        stock: '',
-        img: ''
+        img: '',
+        recommendedAge: '',
     }
 }
 
 function getDefaultFilter() {
-    return { name: '', maxPrice: null, minPrice: null, inStock: '', label: '' }
+    return { name: '', maxPrice: 10000, minPrice: 0, inStock: 0, labels: [], recommendedAge: []}
 }
 
 function getDefaultSort() {
