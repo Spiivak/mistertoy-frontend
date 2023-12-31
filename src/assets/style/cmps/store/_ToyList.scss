@@ -1,4 +1,14 @@
 .toy-list {
   padding-left: 16px;
   // margin-top: 32px;
+
+  @media(max-width: 1089px) {
+    padding-left: 0;
+    padding: 16px;
+    // background-color: red;
+  }
+
+  @media(max-width: 720px) {
+    margin-bottom: 96px;
+  }
 }

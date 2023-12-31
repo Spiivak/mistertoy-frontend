@@ -62,10 +62,12 @@
 
 .category-links-wrapper {
   display: grid;
-  grid-template-columns: repeat(6, auto);
+  grid-template-columns: repeat(6, minmax(100px, 150px));
+  text-align: center;
   justify-content: center;
   align-items: baseline;
-  width: rem(1420px);
+  padding: 16px;
+  // width: rem(1420px);
   max-width: 100%;
   gap: rem(16px);
   .category-card {
@@ -94,15 +96,15 @@
   }
 }
 
-.popular-product-slider {
-  &::before {
-    content: ''; /* Add this line to generate the pseudo-element */
-    background-image: url('../../../img/categories/blue-stars.png');
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%; /* Adjust width as needed */
-    height: 100%; /* Adjust height as needed */
-    z-index: -1; /* Send the pseudo-element to the back */
-  }
-}
+// .popular-product-slider {
+//   &::before {
+//     content: ''; /* Add this line to generate the pseudo-element */
+//     background-image: url('../../../img/categories/blue-stars.png');
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%; /* Adjust width as needed */
+//     height: 100%; /* Adjust height as needed */
+//     z-index: -1; /* Send the pseudo-element to the back */
+//   }
+// }
