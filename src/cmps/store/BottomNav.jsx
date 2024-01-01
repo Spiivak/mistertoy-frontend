@@ -1,6 +1,3 @@
-import Box from '@mui/material/Box';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState } from 'react';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -30,7 +27,7 @@ const isOpen = isFilterModalOpen ? 'open' : 'closed'
     <section className='bottom-nav'>
       <button className='btn-icon small-transparent'><ShoppingCartIcon /></button>
       <NavLink to='/customer/account/profile/favorite'><button className='btn-icon small-transparent'><FavoriteIcon /></button></NavLink>
-      <NavLink to='/'><button className='btn-icon small-transparent home-btn'><img src={LogoPhone} alt="" /></button></NavLink>
+      <NavLink to='/'><button className='home-btn'><img src={LogoPhone} alt="" /></button></NavLink>
       <button className='btn-icon small-transparent' onClick={toggleFilterModal}><SearchIcon /></button>
       <NavLink to='/customer/account/profile'><button className='btn-icon small-transparent'><AccountCircleIcon /></button></NavLink>
 

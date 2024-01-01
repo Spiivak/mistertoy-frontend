@@ -13,7 +13,8 @@ import { toyService } from '../services/toy.service';
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service';
 import { loadToys, saveToy } from '../store/actions/toy.actions';
 import { useSelector } from 'react-redux';
-import { ToyTable } from '../cmps/admin/ToyTable';
+// import { ToyTable } from '../cmps/admin/ToyTable';
+import { ToyTable } from '../cmps/admin/ToyTable'
 import { SortButton } from '../cmps/admin/SortyBy';
 
 export function AdminProducts() {
@@ -26,25 +27,16 @@ export function AdminProducts() {
   const [isFormOpen, setFormOpen] = useState(false)
 
   useEffect(() => {
-    async () => {
-      try {
-        const toys = await loadToys()
-        console.log('toys:', toys)
-        return toys
-      } catch (err) {
-        showErrorMsg('Cannot show toys')
-
-      }
-    }
-
-    (ev) => {
-      ev.preventDefault()
-    }
-    // loadToys()
-    //   .catch(() => {
-    //     showErrorMsg('Cannot show toys')
-    //   })
+    onLoadToys()
   }, [])
+
+    async function onLoadToys() {
+      try {
+          await loadToys()
+      } catch (error) {
+          console.error(error)
+      }
+  }
 
   const handleAddButtonClick = () => {
     setFormOpen(true)
@@ -117,9 +109,10 @@ export function AdminProducts() {
             ) : null}
           </Select>
 
-          {!checkToys && <Button variant="contained" startIcon={<AddIcon />} onClick={handleAddButtonClick}>
+          {/* {!checkToys && <Button variant="contained" startIcon={<AddIcon />} onClick={handleAddButtonClick}>
             Add Product
-          </Button>}
+          </Button>} */}
+          {!checkToys && <button className='btn-ctn medium-primary'>Add Product</button>}
         </div>
       </div>
 
@@ -146,9 +139,7 @@ export function AdminProducts() {
         <div className="add-products-actions flex space-between">
           <div className="right-actions">
 
-            <Tooltip title="All" arrow>
               <Button variant="text" size='small' disabled={checkToys}>All</Button>
-            </Tooltip>
             {!checkToys &&
               <>
                 <Tooltip title="Active" arrow>
@@ -162,9 +153,7 @@ export function AdminProducts() {
                 </Tooltip>
               </>
             }
-                        <Tooltip title="Create View" arrow> 
             <IconButton aria-label="add" disabled={checkToys}><AddIcon /></IconButton>
-                        </Tooltip>
           </div>
           <div className="left-actions">
             <IconButton aria-label="search" disabled={checkToys}><SearchIcon /></IconButton>
