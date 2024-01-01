@@ -12,10 +12,19 @@ import {
   Switch,
   Chip,
 } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { loadToys } from '../../store/actions/toy.actions';
 
-export function ToyTable({ toys }) {
+export function ToyTable() {
+  const toys = useSelector(storeState => storeState.toyModule.toys)
   console.log('ToyTable  toys:', toys)
   const [selectAll, setSelectAll] = useState(false);
+
+ () => useEffect( async () => {
+  const loadedToys =  await loadToys()
+  console.log('loadedToys:', loadedToys)
+  return loadedToys
+  })
 
   const handleSelectAll = () => {
     setSelectAll(!selectAll);
@@ -55,7 +64,7 @@ export function ToyTable({ toys }) {
         </TableHead>
         <TableBody>
           {toys.map((toy) => (
-            <TableRow key={toy.id}>
+            <TableRow key={toy._id}>
               <TableCell>
                 <Checkbox
                   checked={selectAll}

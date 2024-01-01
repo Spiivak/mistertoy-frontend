@@ -1,3 +1,4 @@
+import { loadToys } from '../store/actions/toy.actions';
 import { toyService } from './toy.service';
 
 export const dataService = {
@@ -7,45 +8,37 @@ export const dataService = {
 };
 
 async function getPricesPerLabel() {
-  const toys = await toyService.query();
-  const pricesPerLabel = {};
+  const toys = await toyService.query(toyService.getDefaultFilter());
+  const pricesPerLabel = {}
 
   toys.forEach((toy) => {
     toy.labels.forEach((label) => {
-      if (!pricesPerLabel[label]) {
-        pricesPerLabel[label] = [];
-      }
+      if (!pricesPerLabel[label]) pricesPerLabel[label] = [];
       pricesPerLabel[label].push(toy.price);
-    });
-  });
+    })
+  })
 
   const labels = Object.keys(pricesPerLabel);
-  console.log('getPricesPerLabel  labels:', labels)
   const datasets = labels.map((label) => ({
     label: label,
     data: pricesPerLabel[label],
     backgroundColor: getRandomColor(),
   }));
-  console.log('datasets  datasets:', datasets)
 
   return { labels, datasets };
 }
 
 async function getInventoryByLabel() {
-  const toys = await toyService.query();
-  const inventoryByLabel = {};
+  const toys = await toyService.query(toyService.getDefaultFilter())
+  const inventoryByLabel = {}
 
   toys.forEach((toy) => {
     toy.labels.forEach((label) => {
-      if (!inventoryByLabel[label]) {
-        inventoryByLabel[label] = { inStock: 0, total: 0 };
-      }
+      if (!inventoryByLabel[label]) inventoryByLabel[label] = { inStock: 0, total: 0 };
       inventoryByLabel[label].total++;
-      if (toy.inStock) {
-        inventoryByLabel[label].inStock++;
-      }
-    });
-  });
+      if (toy.inStock) inventoryByLabel[label].inStock++;
+    })
+  })
 
   const labels = Object.keys(inventoryByLabel);
   const datasets = labels.map((label) => ({

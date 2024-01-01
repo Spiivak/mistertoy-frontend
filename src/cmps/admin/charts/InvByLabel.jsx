@@ -35,6 +35,7 @@ export function InvByLabel() {
     const fetchData = async () => {
       try {
         const data = await dataService.getInventoryByLabel();
+        console.log('fetchData  data:', data)
         setChartData({
           labels: data.labels,
           datasets: data.datasets,
@@ -49,7 +50,7 @@ export function InvByLabel() {
 
   return (
     <div className="inventory-bar-chart">
-      <Bar options={options} data={chartData} />
+      <Bar options={options} data={chartData}/>
     </div>
-  );
+  )
 }

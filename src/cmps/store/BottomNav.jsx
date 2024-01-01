@@ -8,18 +8,37 @@ import LogoPhone from '../../assets/img/logo-phone.png';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SearchIcon from '@mui/icons-material/Search';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { setFilterBy } from '../../store/actions/toy.actions';
+import { ToyFilter } from './ToyFilter';
 export function BottomNav() {
   const [value, setValue] = useState(0);
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
+  const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
+
+
+  function toggleFilterModal() {
+    setIsFilterModalOpen(!isFilterModalOpen)
+  }
+
+  function onSetFilter(filterBy) {
+    setFilterBy(filterBy)
+}
+const isOpen = isFilterModalOpen ? 'open' : 'closed'
 
   return (
     <section className='bottom-nav'>
       <button className='btn-icon small-transparent'><ShoppingCartIcon /></button>
       <NavLink to='/customer/account/profile/favorite'><button className='btn-icon small-transparent'><FavoriteIcon /></button></NavLink>
       <NavLink to='/'><button className='btn-icon small-transparent home-btn'><img src={LogoPhone} alt="" /></button></NavLink>
-      <button className='btn-icon small-transparent'><SearchIcon /></button>
+      <button className='btn-icon small-transparent' onClick={toggleFilterModal}><SearchIcon /></button>
       <NavLink to='/customer/account/profile'><button className='btn-icon small-transparent'><AccountCircleIcon /></button></NavLink>
 
-
+      {isFilterModalOpen && (
+        <div className={`bottom-nav-filter-modal ${isOpen}`}>
+          <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} onClose={toggleFilterModal} />
+        </div>
+      )}
       {/* PROFILE */}
       {/* CART */}
       {/* HOME */}
@@ -27,18 +46,5 @@ export function BottomNav() {
       {/* SAVED */}
 
     </section>
-    // <Box sx={{ width: 500 }}>
-    //   <BottomNavigation
-    //     showLabels
-    //     value={value}
-    //     onChange={(event, newValue) => {
-    //       setValue(newValue);
-    //     }}
-    //   >
-    //     <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-    //     <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-    //     <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
-    //   </BottomNavigation>
-    // </Box>
-  );
+  )
 }

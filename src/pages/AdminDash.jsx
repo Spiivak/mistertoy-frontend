@@ -6,7 +6,7 @@ import { RandomNumbers } from '../cmps/admin/charts/RandomNumbers'
 
 export function AdminDash() {
   return (
-    <section className='admin-dashboard flex space-between wrap'>
+    <section className='admin-dashboard flex wrap'>
     <InvByLabel />
     <PricesPerLabel />
     <RandomNumbers />

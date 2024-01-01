@@ -1,3 +1,10 @@
 .admin-dashboard {
   padding: 16px;
+
+  .price-bar-chart, .random-numbers-chart, .inventory-bar-chart{
+    // width: 800px;
+    // height: auto;
+    min-height: 400px;
+    width: 550px;
+  }
 }

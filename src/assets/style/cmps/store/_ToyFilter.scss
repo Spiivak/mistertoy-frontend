@@ -25,3 +25,16 @@
     display: none;
   }
 }
+
+.bottom-nav-filter-modal {
+  width: 100%;
+  height: 500px;
+  padding: 32px;
+  background-color: white;
+
+  z-index: -1000;
+
+  position: absolute;
+  bottom: 65px;
+  right: 0;
+}

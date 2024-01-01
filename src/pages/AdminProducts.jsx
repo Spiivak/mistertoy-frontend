@@ -28,11 +28,17 @@ export function AdminProducts() {
   useEffect(() => {
     async () => {
       try {
-        await loadToys()
+        const toys = await loadToys()
+        console.log('toys:', toys)
+        return toys
       } catch (err) {
         showErrorMsg('Cannot show toys')
 
       }
+    }
+
+    (ev) => {
+      ev.preventDefault()
     }
     // loadToys()
     //   .catch(() => {
@@ -163,7 +169,8 @@ export function AdminProducts() {
           <div className="left-actions">
             <IconButton aria-label="search" disabled={checkToys}><SearchIcon /></IconButton>
             <IconButton aria-label="align" disabled={checkToys}><FilterListIcon /></IconButton>
-            <SortButton />
+            <IconButton aria-label="align" disabled={checkToys}><FilterListIcon /></IconButton>
+            {!checkToys && <SortButton />}
           </div>
         </div>
         {checkToys && <div className="add-your-products">
