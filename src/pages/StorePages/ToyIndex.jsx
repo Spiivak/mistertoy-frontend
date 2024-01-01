@@ -1,13 +1,7 @@
-// const { useState, useEffect } = React
-// const { useSelector, useDispatch } = ReactRedux
-
-import { useDispatch, useSelector } from 'react-redux'
-// import { ToyFilter } from '../cmps/ToyFilter.jsx'
+import { useSelector } from 'react-redux'
 import { ToyList } from '../../cmps/store/ToyList.jsx'
-import { toyService } from '../../services/toy.service.js'
 import { showSuccessMsg, showErrorMsg } from '../../services/event-bus.service.js'
 import { loadToys, removeToy, removeToyOptimistic, saveToy, setFilterBy } from '../../store/actions/toy.actions.js'
-// import { ADD_CAR_TO_CART } from '../store/reducers/toy.reducer.js'
 import { useEffect, useState } from 'react'
 import { ToyFilter } from '../../cmps/store/ToyFilter.jsx'
 
@@ -18,12 +12,15 @@ export function ToyIndex() {
     const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
 
     useEffect(() => {
-        loadToys()
-            .catch(() => {
-                showErrorMsg('Cannot show toys')
-            })
+        onLoadToys()
     }, [filterBy])
-
+    async function onLoadToys() {
+        try {
+            await loadToys()
+        } catch (error) {
+            console.error(error)
+        }
+    }
     async function onRemoveToy(toyId) {
         try {
             await removeToyOptimistic(toyId)

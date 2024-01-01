@@ -75,6 +75,13 @@
   }
 }
 
+.toy-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  // grid-auto-flow: column;
+  min-height: calc(100dvh - 65px - 158px);
+}
+
 /* Admin Layout */
 .admin-index {
   display: grid;

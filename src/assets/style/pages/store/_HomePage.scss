@@ -10,7 +10,7 @@
   // display: flex;
   // justify-content: center;
   gap: 8px;
-  padding: 16px;
+  padding: 0 16px;
   .category-card {
     background-color: white;
     padding: 8px;
@@ -36,14 +36,12 @@
     margin-bottom: 128px;
   }
   .slick-next {
-    margin: 48px;
-    z-index: 9999;
-
+    margin-right: 48px;
   }
 
   .slick-prev {
     margin-left: 48px;
-    z-index: 9999;
+    z-index: 1;
   }
   .image-slider {
     padding: 8px;
