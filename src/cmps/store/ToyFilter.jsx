@@ -12,6 +12,7 @@ import { utilService } from "../../services/util.service.js"
 import { Accordion, AccordionDetails, AccordionSummary, Checkbox, FormControlLabel, Slider, Typography } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useSelector } from 'react-redux'
+import { useEffectUpdate } from '../../customHooks/useEffectUpdate.js'
 
 
 export function ToyFilter({ filterBy, onSetFilter, onClose }) {
@@ -26,7 +27,7 @@ export function ToyFilter({ filterBy, onSetFilter, onClose }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
     onSetFilter = useRef(utilService.debounce(onSetFilter))
 
-    useEffect(() => {
+    useEffectUpdate(() => {
         onSetFilter.current(filterByToEdit)
         console.log('useEffect  filterByToEdit:', filterByToEdit)
     }, [filterByToEdit])

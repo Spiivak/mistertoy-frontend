@@ -9,22 +9,15 @@ import {
   Paper,
   Checkbox,
   FormControlLabel,
-  Switch,
   Chip,
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { loadToys } from '../../store/actions/toy.actions';
 
 export function ToyTable() {
-  const toys = useSelector(storeState => storeState.toyModule.toys)
-  console.log('ToyTable  toys:', toys)
+  const toys = useSelector((storeState) => storeState.toyModule.toys);
+  console.log('ToyTable  toys:', toys);
   const [selectAll, setSelectAll] = useState(false);
-
- () => useEffect( async () => {
-  const loadedToys =  await loadToys()
-  console.log('loadedToys:', loadedToys)
-  return loadedToys
-  })
 
   const handleSelectAll = () => {
     setSelectAll(!selectAll);
@@ -36,9 +29,9 @@ export function ToyTable() {
   };
 
   return (
-    <TableContainer component={Paper}>
-      <Table className='toys-table' aria-label='toy table'>
-        <TableHead>
+    <TableContainer component={Paper} style={{ maxHeight: '540px', overflowY: 'auto' }}>
+      <Table className="toys-table" aria-label="toy table">
+        <TableHead style={{ position: "sticky", top: "0", backgroundColor: "white", zIndex: "9999" }}>
           <TableRow>
             <TableCell>
               <FormControlLabel
@@ -52,7 +45,7 @@ export function ToyTable() {
                 style={{ paddingLeft: '11px' }}
               />
             </TableCell>
-            <TableCell style={{ textAlign: 'starts'}}>Img</TableCell>
+            <TableCell style={{ textAlign: 'starts' }}>Img</TableCell>
             <TableCell>Product</TableCell>
             <TableCell>Status</TableCell>
             <TableCell>Inventory</TableCell>
@@ -73,9 +66,13 @@ export function ToyTable() {
                 />
               </TableCell>
               {/* Implement your actions column */}
-              <TableCell><img src={toy.img} style={{ width: '50px' }}></img></TableCell>
+              <TableCell>
+                <img src={toy.img} style={{ width: '50px' }} alt={toy.name} />
+              </TableCell>
               <TableCell>{toy.name}</TableCell>
-              <TableCell><Chip label="active" color="success" /></TableCell>
+              <TableCell>
+                <Chip label="active" color="success" />
+              </TableCell>
               <TableCell>{toy.inStock}</TableCell>
               <TableCell>{toy.labels.join(', ')}</TableCell>
               <TableCell>N/A</TableCell>

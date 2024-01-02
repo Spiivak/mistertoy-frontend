@@ -4,9 +4,11 @@ import { showSuccessMsg, showErrorMsg } from '../../services/event-bus.service.j
 import { loadToys, removeToy, removeToyOptimistic, saveToy, setFilterBy } from '../../store/actions/toy.actions.js'
 import { useEffect, useState } from 'react'
 import { ToyFilter } from '../../cmps/store/ToyFilter.jsx'
+import { useEffectUpdate } from '../../customHooks/useEffectUpdate.js'
 
 export function ToyIndex() {
     const toys = useSelector(storeState => storeState.toyModule.toys)
+    console.log('ToyIndex  toys:', toys)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
@@ -14,6 +16,7 @@ export function ToyIndex() {
     useEffect(() => {
         onLoadToys()
     }, [filterBy])
+    
     async function onLoadToys() {
         try {
             await loadToys()
