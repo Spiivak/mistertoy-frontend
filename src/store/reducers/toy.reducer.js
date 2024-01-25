@@ -65,7 +65,7 @@ export function toyReducer(state = initialState, action = {}) {
             return { ...state, shoppingCart: newCart };
         case UPDATE_CART:
             const { toyId, quantity } = action;
-             updatedCart = state.shoppingCart.map(id => {
+            updatedCart = state.shoppingCart.map(id => {
                 if (id === toyId) {
                     return { id, quantity };
                 }

@@ -11,13 +11,18 @@ import { SET_USER } from '../store/reducers/user.reducer'
 import { Avatar, Tooltip, Menu, MenuItem, Chip } from '@mui/material'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import MenuIcon from '@mui/icons-material/Menu';
+import { showErrorMsg } from '../services/event-bus.service'
+import { ShoppingCart } from './store/ShoppingCart'
 
 export function AppHeader() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
 
-  const user = useSelector((storeState) => storeState.userModule.loggedinUser)
+  const [isCartOpen, setIsCartOpen] = useState(false)
+
+  const user = userService.getLoggedinUser()
+  console.log('AppHeader  user:', user)
   const [anchorEl, setAnchorEl] = useState(null)
 
   const handleMenuOpen = (event) => {
@@ -39,8 +44,13 @@ export function AppHeader() {
   }
 
   function onSetUser(user) {
+    console.log('onSetUser  user:', user)
     dispatch({ type: SET_USER, user })
     navigate('/')
+  }
+  
+  function handleShoppingCart() {
+    setIsCartOpen(!isCartOpen)
   }
 
   return (
@@ -83,7 +93,7 @@ export function AppHeader() {
                 {user.isAdmin && <NavLink to={'/admin/dashboard'}><MenuItem onClick={handleMenuClose}>Admin</MenuItem></NavLink>}
                 <MenuItem onClick={onLogout}>Logout</MenuItem>
               </Menu>
-              <button className='btn-icon small-transparent'><ShoppingCartIcon /></button>
+              <button className='btn-icon small-transparent' onClick={() => setIsCartOpen(!isCartOpen)}><ShoppingCartIcon /></button>
             </section>
           ) : (
             <section className='app-header-actions flex'>
@@ -95,6 +105,7 @@ export function AppHeader() {
         </header>
       )}
 
+      {isCartOpen && <ShoppingCart/>}
     </>
   )
 }
