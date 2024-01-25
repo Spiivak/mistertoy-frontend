@@ -18,11 +18,11 @@ export function AppHeader() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
+  const cart = useSelector(storeState => storeState.toyModule.shoppingCart);
 
   const [isCartOpen, setIsCartOpen] = useState(false)
 
   const user = userService.getLoggedinUser()
-  console.log('AppHeader  user:', user)
   const [anchorEl, setAnchorEl] = useState(null)
 
   const handleMenuOpen = (event) => {
@@ -44,7 +44,6 @@ export function AppHeader() {
   }
 
   function onSetUser(user) {
-    console.log('onSetUser  user:', user)
     dispatch({ type: SET_USER, user })
     navigate('/')
   }
@@ -93,7 +92,10 @@ export function AppHeader() {
                 {user.isAdmin && <NavLink to={'/admin/dashboard'}><MenuItem onClick={handleMenuClose}>Admin</MenuItem></NavLink>}
                 <MenuItem onClick={onLogout}>Logout</MenuItem>
               </Menu>
-              <button className='btn-icon small-transparent' onClick={() => setIsCartOpen(!isCartOpen)}><ShoppingCartIcon /></button>
+              <button className='btn-icon small-transparent' onClick={handleShoppingCart}>
+            <ShoppingCartIcon />
+            {cart.length > 0 && <span className="cart-indicator">{cart.length}</span>}
+          </button>
             </section>
           ) : (
             <section className='app-header-actions flex'>

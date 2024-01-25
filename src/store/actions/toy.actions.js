@@ -83,22 +83,10 @@ export function setFilterBy(filterBy) {
 // SHOPPING CART
 
 export function addToCart(toyId) {
+    console.log('addToCart  toyId:', toyId)
     try {
-        const { shoppingCart } = store.getState().toyModule
-
-        // Check if the toy is already in the cart
-        const existingItem = shoppingCart.find(item => item.toyId === toyId)
-
-        if (existingItem) {
-            // Toy is already in the cart, update the quantity
-            const newQuantity = existingItem.quantity + 1
-            store.dispatch({ type: UPDATE_CART, toyId, quantity: newQuantity })
-        } else {
-            // Toy is not in the cart, add it
-            store.dispatch({ type: ADD_TO_CART, toyId })
-        }
-
-        store.dispatch({ type: SET_IS_LOADING, isLoading: true })
+        // store.dispatch({ type: SET_IS_LOADING, isLoading: true })
+        store.dispatch({ type: ADD_TO_CART, toyId })
     } catch (error) {
         console.error('Cannot Add to cart', error)
     }

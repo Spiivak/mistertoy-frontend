@@ -1,0 +1,26 @@
+.shopping-cart {
+  background-color: #fff;
+  box-shadow:-9px 20px 20px 0px rgba(0, 0, 0, 0.1411764706);
+  position: fixed;
+  top: 65px;
+  right: 0;
+  padding: 32px;
+  height: calc(100% - 65px);
+  width: 400px;
+  z-index: 9999;
+
+  // border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  h1 {
+    margin-bottom: 16px;
+  }
+  .item-image {
+    width: 50px;
+  }
+
+  .item-name {
+    font-weight: 500;
+  }
+
+
+}
