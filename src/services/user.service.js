@@ -86,7 +86,8 @@ function getEmptyCredentials() {
         fullname: '',
         acceptSMS: '',
         phone: '',
-        isAdmin: false
+        isAdmin: false,
+        img: '',
     }
 }
 

@@ -6,9 +6,16 @@ import { toyService } from "../../services/toy.service.js"
 import { showErrorMsg } from "../../services/event-bus.service.js"
 import { useNavigate, useParams } from "react-router-dom"
 import { Box, Tab, Tabs, Typography } from '@mui/material';
+import { ReviewAdd } from '../../cmps/review/ReviewAdd.jsx';
+import { ReviewPreview } from '../../cmps/review/ReviewPreview.jsx';
+import { loadReviews } from '../../store/actions/review.actions.js';
+import { useSelector } from 'react-redux';
 // import { Box, Tab, Tabs, Typography } from '@mui/material';
 
 export function ToyDetails() {
+    const reviews = useSelector((storeState) => storeState.reviewModule.reviews);
+    console.log('ToyDetails  reviews:', reviews)
+    
     const [toy, setToy] = useState(null)
     const [amount, setAmount] = useState(1)
     const { toyId } = useParams()
@@ -17,6 +24,7 @@ export function ToyDetails() {
 
     useEffect(() => {
         loadToy()
+        onLoadReviews()
     }, [toyId])
 
     const handleAmountChange = (diff) => {
@@ -47,6 +55,17 @@ export function ToyDetails() {
         }
     }
 
+    async function onLoadReviews () {
+        try {
+          return await loadReviews()
+        } catch (error) {
+          setIsLoading(false)
+          console.error('Error loading reviews:', error);
+    
+        }
+      }
+    
+
     if (!toy) return <div>Loading...</div>
     return (
         <section className="toy-details flex">
@@ -58,8 +77,8 @@ export function ToyDetails() {
             {/* TOY INFO */}
             <section className="toy-information">
                 <h1>{toy.name}</h1>
+                <div>
                 <span>Amount</span>
-                <>
                 <div className="amount-section flex align-center">
                     <div className="amount-increase">
                         <button className="btn-increase" onClick={() => handleAmountChange(1)}>+</button>
@@ -70,7 +89,7 @@ export function ToyDetails() {
                     </div>
                     <h4>Price: ${parseFloat((toy.price * amount).toFixed(2))}</h4>
                 </div>
-                </>
+                </div>
                 <div className="toy-details-actions flex gap16 align-center">
                     <button className="btn-ctn medium-primary" onClick={() => handleAmountChange()}>Add to cart</button>
 
@@ -78,6 +97,8 @@ export function ToyDetails() {
                 </div>
             </section>
             <section className="review-container">
+            <ReviewAdd/>
+            <ReviewPreview />
             </section>
             <section className="information">
                 <div className="product-delivery">

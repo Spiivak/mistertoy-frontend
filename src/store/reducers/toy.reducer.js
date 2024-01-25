@@ -12,17 +12,24 @@ export const SET_IS_LOADING = 'SET_IS_LOADING'
 
 export const SET_FILTER_BY = 'SET_FILTER_BY'
 
+
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const UPDATE_CART = 'UPDATE_CART';
+
 const initialState = {
     toys: [],
     lastToys: [],
     isLoading: false,
-    filterBy: toyService.getDefaultFilter()
+    filterBy: toyService.getDefaultFilter(),
+    shoppingCart: [],
 }
 
 export function toyReducer(state = initialState, action = {}) {
 
     let toys
     let lastToys
+    let updatedCart
     switch (action.type) {
         // toy
         case SET_TOYS:
@@ -48,6 +55,23 @@ export function toyReducer(state = initialState, action = {}) {
         case SET_FILTER_BY:
             return { ...state, filterBy: { ...state.filterBy, ...action.filterBy } }
 
+
+        case ADD_TO_CART:
+            updatedCart = [...state.shoppingCart, action.toyId];
+            return { ...state, shoppingCart: updatedCart };
+
+        case REMOVE_FROM_CART:
+            const newCart = state.shoppingCart.filter(id => id !== action.toyId);
+            return { ...state, shoppingCart: newCart };
+        case UPDATE_CART:
+            const { toyId, quantity } = action;
+             updatedCart = state.shoppingCart.map(id => {
+                if (id === toyId) {
+                    return { id, quantity };
+                }
+                return id;
+            });
+            return { ...state, shoppingCart: updatedCart };
         case TOY_UNDO:
             toys = [...state.lastToys]
             return { ...state, toys }
